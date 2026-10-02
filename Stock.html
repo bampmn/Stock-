@@ -1,0 +1,521 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2487.2">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Courier; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Courier; -webkit-text-stroke: #000000; min-height: 16.0px}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html lang="th"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;title&gt;Management OS&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;style&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>body { font-family: system-ui, sans-serif; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>button, input, select { font: inherit; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>input, select { width:100%; border:1px solid #cbd5e1; border-radius:10px; padding:10px 12px; background:white; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>label { display:block; font-size:14px; color:#475569; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>label input, label select { margin-top:6px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>th, td { padding:16px; text-align:left; border-bottom:1px solid #e2e8f0; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>th { color:#64748b; font-size:12px; font-weight:600; background:#f8fafc; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>dialog { border:0; border-radius:20px; width:min(560px,94vw); max-height:90vh; padding:0; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>dialog::backdrop { background:#0f172a80; backdrop-filter:blur(3px); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.primary { background:#2563eb; color:white; border-radius:10px; padding:10px 16px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.secondary { background:white; border:1px solid #cbd5e1; border-radius:10px; padding:10px 16px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.link { color:#2563eb; font-size:14px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>button:hover { filter:brightness(.96); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>button:disabled { opacity:.45; cursor:not-allowed; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.nav-active { background:#eff6ff; color:#2563eb; font-weight:600; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>:focus-visible { outline:3px solid #93c5fd; outline-offset:3px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body class="bg-slate-50 text-slate-900"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="min-h-screen lg:flex"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;aside class="lg:w-64 lg:fixed lg:inset-y-0 bg-white border-r border-slate-200 p-5"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="flex items-center gap-3 mb-7"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;span class="bg-blue-600 text-white rounded-xl p-3 text-xl"&gt;▦&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;h1 class="font-bold text-lg"&gt;Management OS&lt;/h1&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;p class="text-xs tracking-widest text-slate-400"&gt;INVENTORY WORKSPACE&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;nav id="nav" class="flex lg:flex-col gap-2 overflow-auto"&gt;&lt;/nav&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="mt-8 border-t pt-5 space-y-2"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button id="export" class="secondary w-full text-sm"&gt;ดาวน์โหลดสำรองข้อมูล&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button id="import" class="secondary w-full text-sm"&gt;นำเข้าข้อมูลสำรอง&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;input id="file" type="file" accept=".json,application/json" hidden&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p class="text-xs text-slate-400 leading-relaxed pt-2"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>ข้อมูลเก็บในเบราว์เซอร์นี้ ไม่มีฐานข้อมูลกลาง</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>การล้างข้อมูลเว็บไซต์อาจทำให้ข้อมูลหาย กรุณาดาวน์โหลดสำรองเป็นระยะ</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/aside&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;main class="flex-1 lg:ml-64 min-w-0"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;header class="bg-white border-b px-6 py-4 text-sm text-slate-500"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>Workspace &lt;span class="mx-2"&gt;/&lt;/span&gt; &lt;span id="breadcrumb"&gt;&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/header&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="p-5 md:p-8 max-w-screen-2xl mx-auto"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="flex flex-wrap justify-between gap-4 mb-7"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p class="text-xs tracking-widest text-blue-600 font-semibold mb-2"&gt;INVENTORY CONTROL&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h2 id="title" class="text-3xl font-bold"&gt;&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p class="text-slate-500 mt-2"&gt;ติดตามสินค้า ต้นทุนแต่ละล็อต และร้านค้าที่ซื้อ&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="flex flex-wrap gap-2 items-center"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;button data-action="product" class="secondary"&gt;＋ เพิ่มสินค้า&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;button data-action="receive" class="primary"&gt;＋ บันทึกซื้อ / รับเข้า&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;section id="stats" class="grid grid-cols-2 xl:grid-cols-4 gap-4 mb-7"&gt;&lt;/section&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="bg-white border rounded-2xl overflow-hidden shadow-sm"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="flex flex-wrap items-center justify-between p-5 gap-3 border-b"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h3 id="tableTitle" class="font-semibold"&gt;&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="flex flex-wrap gap-2"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;button id="addSupplier" class="secondary text-sm hidden"&gt;＋ เพิ่มร้านค้า&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;input id="search" aria-label="ค้นหารายการ" placeholder="ค้นหาชื่อ รุ่น รหัส หรือร้านค้า…" class="sm:w-72"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div id="content" class="overflow-x-auto"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p id="saved" class="text-xs text-slate-400 mt-4"&gt;&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/main&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;dialog id="dialog"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;form id="form" class="p-6 space-y-5"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="flex justify-between items-center gap-4"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h2 id="dialogTitle" class="text-xl font-bold"&gt;&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button type="button" id="close" class="text-slate-400 text-2xl" aria-label="ปิด"&gt;×&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div id="fields" class="grid grid-cols-1 sm:grid-cols-2 gap-4"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;p id="formError" class="text-sm text-red-600" role="alert"&gt;&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="flex justify-end gap-2 border-t pt-4"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button type="button" id="cancel" class="secondary"&gt;ยกเลิก&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button type="submit" class="primary"&gt;บันทึก&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/form&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/dialog&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div id="toast" role="status" class="hidden fixed bottom-5 right-5 left-5 sm:left-auto sm:max-w-md bg-slate-900 text-white rounded-xl p-4 shadow-xl z-50"&gt;&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;script&gt;</span></p>
+<p class="p1"><span class="s1">"use strict";</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">const KEY = "management-os-standalone-v1";</span></p>
+<p class="p1"><span class="s1">const PREVIOUS = KEY + "-previous";</span></p>
+<p class="p1"><span class="s1">const $ = id =&gt; document.getElementById(id);</span></p>
+<p class="p1"><span class="s1">const esc = value =&gt; String(value ?? "").replace(/[&amp;&lt;&gt;"']/g, c =&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>({"&amp;":"&amp;amp;","&lt;":"&amp;lt;","&gt;":"&amp;gt;",'"':"&amp;quot;","'":"&amp;#39;"}[c]));</span></p>
+<p class="p1"><span class="s1">const money = n =&gt; new Intl.NumberFormat("th-TH", {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>style:"currency", currency:"THB"</span></p>
+<p class="p1"><span class="s1">}).format(n);</span></p>
+<p class="p1"><span class="s1">const number = n =&gt; new Intl.NumberFormat("th-TH", {maximumFractionDigits:4}).format(n);</span></p>
+<p class="p1"><span class="s1">const today = () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const d = new Date();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;</span></p>
+<p class="p1"><span class="s1">};</span></p>
+<p class="p1"><span class="s1">const formatDate = d =&gt; d ? new Date(d+"T12:00:00").toLocaleDateString("th-TH") : "ไม่ทราบวันที่";</span></p>
+<p class="p1"><span class="s1">const uid = prefix =&gt; prefix + "-" + (globalThis.crypto?.randomUUID?.() ||</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>Date.now().toString(36)+Math.random().toString(36).slice(2));</span></p>
+<p class="p1"><span class="s1">const empty = () =&gt; ({products:[],suppliers:[],orders:[],lots:[],usages:[]});</span></p>
+<p class="p1"><span class="s1">const clone = value =&gt; JSON.parse(JSON.stringify(value));</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">let state = empty(), revision = 0, savedAt = "", storedRaw = null;</span></p>
+<p class="p1"><span class="s1">let view = "inventory", mode = "", editing = "", toastTimer;</span></p>
+<p class="p1"><span class="s1">let storageBlocked = false;</span></p>
+<p class="p1"><span class="s1">const views = {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>inventory:"คลังสินค้า",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>purchases:"รายการซื้อ",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>usage:"เบิกใช้งาน",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>suppliers:"ร้านค้า"</span></p>
+<p class="p1"><span class="s1">};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function notify(message) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>$("toast").textContent = message;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>$("toast").classList.remove("hidden");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>clearTimeout(toastTimer);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>toastTimer = setTimeout(() =&gt; $("toast").classList.add("hidden"), 6500);</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function validDate(value, optional=false) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (optional &amp;&amp; value==="") return true;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return typeof value==="string" &amp;&amp; /^\d{4}-\d{2}-\d{2}$/.test(value) &amp;&amp;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>Number.isFinite(Date.parse(value)) &amp;&amp;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>new Date(value).toISOString().slice(0,10)===value;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function safeURL(value) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const text = String(value || "").trim();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (!text) return "";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const url = new URL(text);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (!["https:","http:"].includes(url.protocol)) throw Error("ลิงก์ต้องเป็น http:// หรือ https://");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return url.href;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">/* Accepts backups from this page and the previous Management OS application. */</span></p>
+<p class="p1"><span class="s1">function validate(s) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (!s || typeof s!=="object") throw Error("ไฟล์ข้อมูลไม่ถูกต้อง");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>for (const key of ["products","suppliers","orders","lots","usages"]) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if (!Array.isArray(s[key])) throw Error("ไฟล์ไม่มีตาราง "+key);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const ids = new Set();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>for (const row of s[key]) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if (!row || typeof row.id!=="string" || !row.id || ids.has(row.id))</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>throw Error("รหัสข้อมูลว่างหรือซ้ำใน "+key);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>ids.add(row.id);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const string = (v, max=4000) =&gt; typeof v==="string" &amp;&amp; v.length&lt;=max;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const finite = (v, positive=false) =&gt; typeof v==="number" &amp;&amp; Number.isFinite(v) &amp;&amp;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>(positive ? v&gt;0 : v&gt;=0) &amp;&amp; v&lt;=1e12;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const products = new Set(s.products.map(p=&gt;p.id));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const suppliers = new Set(s.suppliers.map(p=&gt;p.id));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const orders = new Set(s.orders.map(p=&gt;p.id));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const lots = new Map(s.lots.map(p=&gt;[p.id,p]));</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>for (const p of s.products)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if (!string(p.name)||!p.name.trim()||!string(p.variant)||!string(p.unit)||!p.unit.trim()||!string(p.location))</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>throw Error("ข้อมูลสินค้าไม่ถูกต้อง");</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>for (const p of s.suppliers) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if (!string(p.name)||!p.name.trim()||!string(p.url)) throw Error("ข้อมูลร้านค้าไม่ถูกต้อง");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>safeURL(p.url);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>for (const o of s.orders) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if (!suppliers.has(o.supplierId)||!validDate(o.date,true)||!finite(o.total)||</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>!string(o.dateType)||!string(o.source)||!string(o.url)) throw Error("ข้อมูลคำสั่งซื้อไม่ถูกต้อง");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>safeURL(o.url);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>for (const l of s.lots)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if (!products.has(l.productId)||!orders.has(l.orderId)||!finite(l.qty,true)||</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>!finite(l.cost)||typeof l.estimated!=="boolean"||</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>(l.pending!==undefined&amp;&amp;typeof l.pending!=="boolean")) throw Error("ข้อมูลล็อตไม่ถูกต้อง");</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const used = new Map();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>for (const u of s.usages) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if (!lots.has(u.lotId)||!finite(u.qty,true)||!validDate(u.date)||</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>!string(u.person)||!string(u.note)) throw Error("ข้อมูลการเบิกไม่ถูกต้อง");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>used.set(u.lotId,(used.get(u.lotId)||0)+u.qty);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>for (const [id,q] of used)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if (lots.get(id).pending||q&gt;lots.get(id).qty+1e-8) throw Error("ยอดเบิกเกินสต็อกหรือเบิกจากล็อตรอรับ");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return s;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function load() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>try {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>storedRaw = localStorage.getItem(KEY);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if (storedRaw) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const doc = JSON.parse(storedRaw);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>state = validate(doc.state);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>revision = doc.revision || 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>savedAt = doc.savedAt || "";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>} catch (e) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>storageBlocked = true;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>notify("อ่านข้อมูลไม่ได้: "+e.message+" — ยังไม่เขียนทับข้อมูลเดิม");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function commit(next) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (storageBlocked) throw Error("พื้นที่เก็บข้อมูลมีปัญหา กรุณาสำรองและตรวจข้อมูลก่อน");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>validate(next);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (localStorage.getItem(KEY)!==storedRaw)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>throw Error("ข้อมูลถูกเปลี่ยนจากแท็บอื่น กรุณารีเฟรชก่อนบันทึก");</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const doc = {version:1,state:next,revision:revision+1,savedAt:new Date().toISOString()};</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const raw = JSON.stringify(doc);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>/* Keep the previous successful state before replacing the current one. */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (storedRaw) localStorage.setItem(PREVIOUS,storedRaw);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>localStorage.setItem(KEY,raw);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>storedRaw=raw; state=next; revision=doc.revision; savedAt=doc.savedAt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>render();</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">const product = id =&gt; state.products.find(p=&gt;p.id===id);</span></p>
+<p class="p1"><span class="s1">const supplier = id =&gt; state.suppliers.find(p=&gt;p.id===id);</span></p>
+<p class="p1"><span class="s1">const order = id =&gt; state.orders.find(p=&gt;p.id===id);</span></p>
+<p class="p1"><span class="s1">const remaining = l =&gt; l.pending ? 0 : Math.max(0,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>Math.round((l.qty-state.usages.filter(u=&gt;u.lotId===l.id).reduce((sum,u)=&gt;sum+u.qty,0))*1e8)/1e8);</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function stock(p) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const lots=state.lots.filter(l=&gt;l.productId===p.id);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>qty:lots.reduce((s,l)=&gt;s+remaining(l),0),</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>value:lots.reduce((s,l)=&gt;s+remaining(l)*l.cost/l.qty,0),</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>pending:lots.filter(l=&gt;l.pending).reduce((s,l)=&gt;s+l.qty,0)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>};</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">const button = (action,id,text) =&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>`&lt;button class="link whitespace-nowrap mr-3" data-action="${action}" data-id="${esc(id)}"&gt;${esc(text)}&lt;/button&gt;`;</span></p>
+<p class="p1"><span class="s1">const external = url =&gt; url ? `&lt;a class="link" href="${esc(safeURL(url))}" target="_blank" rel="noopener noreferrer"&gt;เปิดลิงก์ ↗&lt;/a&gt;` : "—";</span></p>
+<p class="p1"><span class="s1">const table = (headers,rows) =&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>`&lt;table class="w-full text-sm"&gt;&lt;thead&gt;&lt;tr&gt;${headers.map(h=&gt;`&lt;th&gt;${h}&lt;/th&gt;`).join("")}&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;${</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>rows.length ? rows.join("") : `&lt;tr&gt;&lt;td colspan="${headers.length}" class="text-center py-16 text-slate-400"&gt;ยังไม่มีรายการที่ตรงกัน&lt;/td&gt;&lt;/tr&gt;`</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}&lt;/tbody&gt;&lt;/table&gt;`;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function render() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>$("title").textContent=views[view];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>$("breadcrumb").textContent=views[view];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>$("tableTitle").textContent=views[view];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>$("addSupplier").classList.toggle("hidden",view!=="suppliers");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>$("nav").innerHTML=Object.entries(views).map(([key,label])=&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>`&lt;button data-view="${key}" class="text-left whitespace-nowrap px-4 py-3 rounded-xl ${view===key?"nav-active":"text-slate-500"}"&gt;${label}&lt;/button&gt;`).join("");</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const values=state.products.map(stock);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const cards=[</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>["รายการสินค้า",number(state.products.length)],</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>["มูลค่าสต็อกพร้อมใช้",money(values.reduce((s,p)=&gt;s+p.value,0))],</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>["ล็อตรอรับ",number(state.lots.filter(l=&gt;l.pending).length)],</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>["ยอดคำสั่งซื้อรวม",money(state.orders.reduce((s,o)=&gt;s+o.total,0))]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>$("stats").innerHTML=cards.map(([label,value])=&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>`&lt;div class="bg-white border rounded-2xl p-5"&gt;&lt;p class="text-sm text-slate-500"&gt;${label}&lt;/p&gt;&lt;p class="text-2xl font-bold mt-3"&gt;${value}&lt;/p&gt;&lt;/div&gt;`).join("");</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const q=$("search").value.trim().toLocaleLowerCase();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const match=(...v)=&gt;v.join(" ").toLocaleLowerCase().includes(q);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>let rows=[];</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(view==="inventory") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>rows=state.products.filter(p=&gt;match(p.id,p.name,p.variant,p.location)).map(p=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const s=stock(p);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>return `&lt;tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;td&gt;&lt;b&gt;${esc(p.name)}&lt;/b&gt;&lt;div class="text-slate-400 text-xs mt-1"&gt;${esc(p.variant)} · ${esc(p.id)}&lt;/div&gt;&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;td&gt;${esc(p.location)||"—"}&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;td&gt;&lt;b class="${s.qty?"text-emerald-600":"text-slate-400"}"&gt;${number(s.qty)}&lt;/b&gt; ${esc(p.unit)}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>${s.pending?`&lt;div class="text-xs text-amber-600 mt-1"&gt;รอรับ ${number(s.pending)} ${esc(p.unit)}&lt;/div&gt;`:""}&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;td&gt;${money(s.value)}&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;td&gt;${button("product",p.id,"แก้ไข")}${button("receive",p.id,"ซื้อเพิ่ม")}${button("use",p.id,"เบิก")}&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/tr&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>$("content").innerHTML=table(["สินค้า / รุ่น","ที่เก็บ","คงเหลือ","มูลค่า","จัดการ"],rows);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(view==="purchases") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>rows=[...state.lots].reverse().filter(l=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const p=product(l.productId),o=order(l.orderId);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>return match(p.name,p.variant,l.id,o.id,o.source,supplier(o.supplierId).name);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}).map(l=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const p=product(l.productId),o=order(l.orderId);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>return `&lt;tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;td&gt;&lt;b&gt;${esc(p.name)}&lt;/b&gt;&lt;div class="text-xs text-slate-400 mt-1"&gt;${esc(p.variant)} · ${esc(l.id)}&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="text-xs text-slate-400 mt-1"&gt;${esc(o.source)}&lt;/div&gt;&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;td&gt;${esc(supplier(o.supplierId).name)}&lt;div&gt;${external(o.url)}&lt;/div&gt;&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;td&gt;${formatDate(o.date)}&lt;div class="text-xs text-slate-400"&gt;${esc(o.dateType)}&lt;/div&gt;&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;td&gt;${l.pending?'&lt;span class="text-amber-600"&gt;รอรับ&lt;/span&gt;':'รับแล้ว'} ${number(l.qty)} ${esc(p.unit)}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="text-xs text-slate-500"&gt;พร้อมใช้ ${number(remaining(l))}&lt;/div&gt;&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;td&gt;${money(l.cost/l.qty)}&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;td&gt;${money(l.cost)}&lt;div class="text-xs text-slate-400"&gt;${l.estimated?"ประมาณการ":"ยืนยันแล้ว"}&lt;/div&gt;&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;td&gt;${l.pending?button("confirm",l.id,"ยืนยันรับครบ"):""}${button("cost",l.id,"แก้ต้นทุน")}&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/tr&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>$("content").innerHTML=table(["สินค้า / ล็อต","ร้านค้า","วันที่","จำนวน","ต้นทุน/หน่วย","ต้นทุนล็อต","จัดการ"],rows);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(view==="usage") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>rows=[...state.usages].reverse().filter(u=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const l=state.lots.find(l=&gt;l.id===u.lotId);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>return match(product(l.productId).name,u.person,u.note);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}).map(u=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const l=state.lots.find(l=&gt;l.id===u.lotId),p=product(l.productId);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>return `&lt;tr&gt;&lt;td&gt;${formatDate(u.date)}&lt;/td&gt;&lt;td&gt;&lt;b&gt;${esc(p.name)}&lt;/b&gt;&lt;div class="text-xs text-slate-400"&gt;${esc(p.variant)}&lt;/div&gt;&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;td&gt;${number(u.qty)} ${esc(p.unit)}&lt;/td&gt;&lt;td&gt;${money(u.qty*l.cost/l.qty)}&lt;/td&gt;&lt;td&gt;${esc(u.person)}&lt;/td&gt;&lt;td&gt;${esc(u.note)}&lt;/td&gt;&lt;/tr&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>$("content").innerHTML=table(["วันที่","สินค้า","จำนวนเบิก","ต้นทุน","ผู้เบิก","ใช้งาน / หมายเหตุ"],rows);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(view==="suppliers") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>rows=state.suppliers.filter(s=&gt;match(s.name,s.url)).map(s=&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>`&lt;tr&gt;&lt;td&gt;&lt;b&gt;${esc(s.name)}&lt;/b&gt;&lt;/td&gt;&lt;td&gt;${external(s.url)}&lt;/td&gt;&lt;td&gt;${state.orders.filter(o=&gt;o.supplierId===s.id).length}&lt;/td&gt;&lt;td&gt;${button("supplier",s.id,"แก้ไข")}&lt;/td&gt;&lt;/tr&gt;`);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>$("content").innerHTML=table(["ร้านค้า","ลิงก์","จำนวนคำสั่งซื้อ","จัดการ"],rows);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>$("saved").textContent=savedAt</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>? `บันทึกล่าสุด ${new Date(savedAt).toLocaleString("th-TH")} · รุ่นข้อมูล ${revision}`</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>: "เริ่มจากเพิ่มสินค้าและร้านค้า หรือนำเข้าไฟล์สำรอง JSON เดิม";</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function input(label,name,value="",type="text",required=true,full=false) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return `&lt;label class="${full?"sm:col-span-2":""}"&gt;${esc(label)}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;input name="${name}" type="${type}" value="${esc(value)}" ${required?"required":""}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>${type==="number"?'min="0" step="any"':'maxlength="2000"'}&gt;&lt;/label&gt;`;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">function select(label,name,options,value="") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return `&lt;label class="sm:col-span-2"&gt;${esc(label)}&lt;select name="${name}" required&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;option value=""&gt;เลือก${esc(label)}&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>${options.map(([id,label])=&gt;`&lt;option value="${esc(id)}" ${id===value?"selected":""}&gt;${esc(label)}&lt;/option&gt;`).join("")}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/select&gt;&lt;/label&gt;`;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function openForm(action,id="") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>mode=action;editing=id;$("formError").textContent="";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>let html="",title="";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(action==="product") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const p=product(id)||{};</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>title=id?"แก้ไขสินค้า":"เพิ่มสินค้า";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>html=input("ชื่อสินค้า","name",p.name||"","text",true,true)+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>input("รุ่น / ขนาด","variant",p.variant||"","text",false,true)+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>input("หน่วย","unit",p.unit||"ชิ้น")+input("ที่เก็บ","location",p.location||"","text",false);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(action==="supplier") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const s=supplier(id)||{};</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>title=id?"แก้ไขร้านค้า":"เพิ่มร้านค้า";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>html=input("ชื่อร้าน","name",s.name||"","text",true,true)+input("ลิงก์ร้าน","url",s.url||"","url",false,true);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(action==="receive") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(!state.products.length||!state.suppliers.length) return notify("กรุณาเพิ่มสินค้าและร้านค้าก่อน");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>title="บันทึกซื้อ / รับสินค้า";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>html=select("สินค้า","productId",state.products.map(p=&gt;[p.id,p.name+" · "+p.variant]),id)+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>select("ร้านค้า","supplierId",state.suppliers.map(s=&gt;[s.id,s.name]))+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>select("สถานะ","status",[["received","รับสินค้าแล้ว"],["pending","รอรับสินค้า"]],"received")+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>input("วันที่บันทึก / รับเข้า","date",today(),"date")+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>input("จำนวนตามหน่วยสินค้า","qty","","number")+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>input("ต้นทุนสุทธิทั้งล็อต (บาท)","cost","","number")+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>input("เลขคำสั่งซื้อ / หมายเหตุ","source","","text",false)+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>input("ลิงก์สินค้า","url","","url",false,true)+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>'&lt;p class="sm:col-span-2 text-xs text-slate-500"&gt;ใส่ยอดหลังส่วนลดรวมค่าขนส่งของล็อตนี้ ระบบเก็บราคาแยกทุกครั้งที่ซื้อ&lt;/p&gt;';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(action==="use") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const available=state.lots.filter(l=&gt;remaining(l)&gt;0&amp;&amp;(!id||l.productId===id));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(!available.length) return notify("ไม่มีล็อตที่มีสินค้าพร้อมเบิก");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>title="เบิกสินค้า";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>html=select("ล็อตสินค้า","lotId",available.map(l=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const p=product(l.productId);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>return [l.id,`${p.name} ${p.variant} · ${l.id} · เหลือ ${number(remaining(l))} ${p.unit}`];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}),available.length===1?available[0].id:"")+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>input("จำนวนเบิก","qty","","number")+input("วันที่เบิก","date",today(),"date")+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>input("ผู้เบิก","person")+input("งานที่นำไปใช้ / หมายเหตุ","note","","text",true,true);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(action==="confirm") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>title="ยืนยันรับสินค้าครบล็อต";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>html=input("วันที่รับจริง","date",today(),"date",true,true)+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>'&lt;p class="sm:col-span-2 text-sm text-slate-500"&gt;ยืนยันเมื่อได้รับครบตามจำนวนแล้ว ระบบจะเพิ่มล็อตนี้เป็นสต็อกพร้อมใช้โดยไม่สร้างรายการซื้อซ้ำ&lt;/p&gt;';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(action==="cost") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const l=state.lots.find(l=&gt;l.id===id);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>title="แก้ไขต้นทุนล็อต";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>html=input("ต้นทุนสุทธิทั้งล็อต","cost",l.cost,"number",true,true)+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>'&lt;p class="sm:col-span-2 text-xs text-slate-500"&gt;การแก้ไขจะคำนวณมูลค่าคงเหลือและต้นทุนการเบิกของล็อตนี้ใหม่ แต่ไม่เปลี่ยนยอดคำสั่งซื้อเดิม&lt;/p&gt;';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>$("dialogTitle").textContent=title;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>$("fields").innerHTML=html;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>$("dialog").showModal();</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">$("form").addEventListener("submit",e=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>e.preventDefault();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>try {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const f=Object.fromEntries(new FormData(e.target));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const next=clone(state);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const amount=(name,positive=false)=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const value=Number(f[name]);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if(f[name]===""||!Number.isFinite(value)||(positive?value&lt;=0:value&lt;0)||value&gt;1e9)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>throw Error("กรุณากรอกจำนวนหรือต้นทุนให้ถูกต้อง");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>return value;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>};</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(mode==="product") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const p={id:editing||uid("P"),name:f.name.trim(),variant:f.variant.trim(),unit:f.unit.trim(),location:f.location.trim()};</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const index=next.products.findIndex(x=&gt;x.id===editing);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if(index&gt;=0) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if(next.lots.some(l=&gt;l.productId===editing)&amp;&amp;p.unit!==next.products[index].unit)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>throw Error("สินค้าที่มีประวัติซื้อแล้วไม่สามารถเปลี่ยนหน่วยได้");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>next.products[index]=p;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>} else next.products.push(p);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(mode==="supplier") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const s={id:editing||uid("S"),name:f.name.trim(),url:safeURL(f.url)};</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const index=next.suppliers.findIndex(x=&gt;x.id===editing);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if(index&gt;=0) next.suppliers[index]=s; else next.suppliers.push(s);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(mode==="receive") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const id=uid("O"),pending=f.status==="pending",cost=amount("cost");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>next.orders.push({id,date:f.date,dateType:pending?"บันทึกซื้อ / รอรับ":"รับเข้า",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>supplierId:f.supplierId,total:cost,source:f.source.trim()||"บันทึกด้วยตนเอง",url:safeURL(f.url)});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>next.lots.push({id:uid("L"),productId:f.productId,orderId:id,qty:amount("qty",true),cost,estimated:false,pending});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(mode==="use") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const l=state.lots.find(l=&gt;l.id===f.lotId),qty=amount("qty",true);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if(!l||qty&gt;remaining(l)+1e-8) throw Error("จำนวนเบิกเกินสินค้าพร้อมใช้");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>next.usages.push({id:uid("U"),lotId:l.id,qty,date:f.date,person:f.person.trim(),note:f.note.trim()});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(mode==="confirm") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const l=next.lots.find(l=&gt;l.id===editing);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if(!l?.pending) throw Error("ล็อตนี้ไม่ได้รอรับสินค้า");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>l.pending=false;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const o=next.orders.find(o=&gt;o.id===l.orderId);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>o.date=f.date;o.dateType="รับเข้า";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(mode==="cost") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const l=next.lots.find(l=&gt;l.id===editing);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>l.cost=amount("cost");l.estimated=false;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>commit(next);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>$("dialog").close();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>notify("บันทึกเรียบร้อย");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>} catch(e) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>$("formError").textContent=e.message;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1">});</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">document.addEventListener("click",e=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const nav=e.target.closest("[data-view]");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(nav) {view=nav.dataset.view;$("search").value="";render();}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const action=e.target.closest("[data-action]");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(action) openForm(action.dataset.action,action.dataset.id||"");</span></p>
+<p class="p1"><span class="s1">});</span></p>
+<p class="p1"><span class="s1">$("search").addEventListener("input",render);</span></p>
+<p class="p1"><span class="s1">$("close").onclick=$("cancel").onclick=()=&gt;$("dialog").close();</span></p>
+<p class="p1"><span class="s1">$("addSupplier").onclick=()=&gt;openForm("supplier");</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function download(filename,text) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const url=URL.createObjectURL(new Blob([text],{type:"application/json"}));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const a=document.createElement("a");a.href=url;a.download=filename;a.click();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>setTimeout(()=&gt;URL.revokeObjectURL(url),1000);</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">$("export").onclick=()=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(storageBlocked&amp;&amp;storedRaw) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>download("management-os-recovery.json",storedRaw);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>return;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>download(`management-os-${today()}-r${revision}.json`,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>JSON.stringify({version:1,state,revision,savedAt},null,2));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>notify("ดาวน์โหลดไฟล์สำรองแล้ว");</span></p>
+<p class="p1"><span class="s1">};</span></p>
+<p class="p1"><span class="s1">$("import").onclick=()=&gt;$("file").click();</span></p>
+<p class="p1"><span class="s1">$("file").onchange=async e=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const file=e.target.files[0];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(!file) return;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>try {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(file.size&gt;20*1024*1024) throw Error("ไฟล์ใหญ่เกิน 20 MB");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const doc=JSON.parse(await file.text());</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const next=validate(doc.state||doc);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(!confirm(`นำเข้า ${next.products.length} สินค้า และ ${next.orders.length} คำสั่งซื้อ?\nข้อมูลนี้จะแทนที่ข้อมูลปัจจุบัน กรุณาดาวน์โหลดสำรองก่อน`)) return;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>commit(clone(next));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>notify("นำเข้าข้อมูลสำเร็จ");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>} catch(e) {notify("นำเข้าไม่ได้: "+e.message);}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>finally {$("file").value="";}</span></p>
+<p class="p1"><span class="s1">};</span></p>
+<p class="p1"><span class="s1">window.addEventListener("storage",e=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(e.key===KEY) notify("ข้อมูลเปลี่ยนจากแท็บอื่น กรุณารีเฟรชก่อนทำรายการต่อ");</span></p>
+<p class="p1"><span class="s1">});</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">load();</span></p>
+<p class="p1"><span class="s1">render();</span></p>
+<p class="p1"><span class="s1">&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+</body>
+</html>
