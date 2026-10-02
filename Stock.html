@@ -1,0 +1,502 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2487.2">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Courier; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Courier; -webkit-text-stroke: #000000; min-height: 16.0px}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html lang="en"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;meta charset="UTF-8"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;title&gt;Management OS&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1">&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;style&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>body{font-family:Inter,system-ui,sans-serif;background:#f6f8fc;color:#172033}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>button,input,select,textarea{font:inherit}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>button{cursor:pointer}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>input,select,textarea{width:100%;padding:10px 12px;border:1px solid #dce2ec;border-radius:10px;background:white}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>label{display:block;font-size:13px;font-weight:600;color:#536078}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>label input,label select,label textarea{margin-top:7px;font-weight:400}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>button:disabled{opacity:.45;cursor:not-allowed}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>.primary{background:#2563eb;color:white;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>.secondary{background:white;border:1px solid #dce2ec;padding:10px 14px;border-radius:10px;font-size:14px}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>.small{padding:6px 9px;font-size:12px;border:1px solid #dce2ec;border-radius:7px;background:white}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>.active{background:#edf3ff;color:#2563eb;font-weight:600}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>th,td{text-align:left;padding:15px;border-bottom:1px solid #edf0f6;vertical-align:top}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>th{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:#8190a7;background:#fafbfe}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>td{font-size:13px}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>.muted{color:#8490a4;font-size:12px}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>.badge{display:inline-block;padding:3px 8px;border-radius:6px;font-size:11px;background:#edf3ff;color:#2563eb}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>dialog{padding:0;border:0;border-radius:18px;width:min(590px,94vw);max-height:90vh}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>dialog::backdrop{background:#111b3380;backdrop-filter:blur(3px)}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>:focus-visible{outline:3px solid #93c5fd;outline-offset:3px}</span></p>
+<p class="p1"><span class="s1">&lt;/style&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;div class="min-h-screen lg:flex"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;aside class="bg-white border-r border-slate-200 p-5 lg:w-60 lg:fixed lg:inset-y-0 lg:overflow-auto"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="flex items-center gap-3 mb-8"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center text-xl"&gt;▦&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div&gt;&lt;div class="font-bold"&gt;Management OS&lt;/div&gt;&lt;div class="muted"&gt;Your operations workspace&lt;/div&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p class="text-[10px] tracking-widest text-slate-400 mb-3"&gt;WORKSPACE&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;nav id="nav" class="flex lg:flex-col gap-1 overflow-auto"&gt;&lt;/nav&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="mt-8 pt-5 border-t space-y-2"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button id="backup" class="secondary w-full"&gt;↓ Backup JSON&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button id="import" class="secondary w-full"&gt;↑ Import JSON&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;input id="file" type="file" accept=".json,application/json" hidden&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;p class="text-xs text-slate-400 leading-relaxed pt-3"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>Local browser storage. No shared database or account login.</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>Export backups regularly. Moving to another browser or domain does not move your data.</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/aside&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;main class="lg:ml-60 flex-1 min-w-0"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;header class="bg-white border-b px-6 py-4 flex justify-between items-center"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="text-sm text-slate-400"&gt;Workspace &lt;span class="mx-2"&gt;/&lt;/span&gt;&lt;span id="crumb" class="text-slate-600"&gt;&lt;/span&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;span class="badge"&gt;Personal workspace&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="p-5 md:p-8 max-w-[1600px] mx-auto"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="flex flex-wrap justify-between items-start gap-4 mb-7"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;p class="text-blue-600 text-xs font-semibold tracking-widest mb-2"&gt;CONTROL CENTER&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;h1 id="title" class="text-3xl font-bold"&gt;&lt;/h1&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;p id="subtitle" class="text-slate-500 text-sm mt-2"&gt;&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div id="actions" class="flex flex-wrap gap-2"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div id="stats" class="grid grid-cols-2 xl:grid-cols-4 gap-4 mb-7"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="flex flex-wrap items-center justify-between mb-4 gap-3"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h2 id="sectionTitle" class="font-semibold"&gt;&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;input id="search" class="sm:max-w-xs" placeholder="Search this view…" aria-label="Search"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div id="content"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;p id="saved" class="muted mt-5"&gt;&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/main&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;dialog id="modal"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;form id="form" class="p-6"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="flex justify-between items-center mb-6"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;h2 id="modalTitle" class="text-xl font-bold"&gt;&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button id="close" type="button" class="text-2xl text-slate-400" aria-label="Close"&gt;×&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div id="fields" class="grid sm:grid-cols-2 gap-4"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p id="error" class="text-red-600 text-sm mt-4" role="alert"&gt;&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="flex justify-end gap-2 mt-6 pt-4 border-t"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button id="cancel" type="button" class="secondary"&gt;Cancel&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button type="submit" class="primary"&gt;Save&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/form&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/dialog&gt;</span></p>
+<p class="p1"><span class="s1">&lt;div id="toast" role="status" class="hidden fixed bottom-5 left-5 right-5 sm:left-auto sm:max-w-md bg-slate-900 text-white rounded-xl p-4 shadow-xl z-50"&gt;&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;script&gt;</span></p>
+<p class="p1"><span class="s1">"use strict";</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">const $=id=&gt;document.getElementById(id);</span></p>
+<p class="p1"><span class="s1">const KEY="management-os-workflows-v1";</span></p>
+<p class="p1"><span class="s1">const PREVIOUS=KEY+"-previous";</span></p>
+<p class="p1"><span class="s1">const esc=v=&gt;String(v??"").replace(/[&amp;&lt;&gt;"']/g,c=&gt;({"&amp;":"&amp;amp;","&lt;":"&amp;lt;","&gt;":"&amp;gt;",'"':"&amp;quot;","'":"&amp;#39;"}[c]));</span></p>
+<p class="p1"><span class="s1">const copy=v=&gt;JSON.parse(JSON.stringify(v));</span></p>
+<p class="p1"><span class="s1">const money=v=&gt;new Intl.NumberFormat("th-TH",{style:"currency",currency:"THB"}).format(v);</span></p>
+<p class="p1"><span class="s1">const num=v=&gt;new Intl.NumberFormat("en",{maximumFractionDigits:4}).format(v);</span></p>
+<p class="p1"><span class="s1">const today=()=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const d=new Date();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;</span></p>
+<p class="p1"><span class="s1">};</span></p>
+<p class="p1"><span class="s1">const uid=p=&gt;p+"-"+(globalThis.crypto?.randomUUID?.()||Date.now().toString(36)+Math.random().toString(36).slice(2));</span></p>
+<p class="p1"><span class="s1">const fmt=d=&gt;d?new Date(d+"T12:00:00").toLocaleDateString():"Unknown date";</span></p>
+<p class="p1"><span class="s1">const empty=()=&gt;({products:[],suppliers:[],orders:[],lots:[],usages:[],tasks:[]});</span></p>
+<p class="p1"><span class="s1">const stages=["Backlog","In progress","Review","Done"];</span></p>
+<p class="p1"><span class="s1">const views={</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>overview:["Overview","A clear view of your stock and work."],</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>inventory:["Inventory","Know what is available, incoming, and ready to use."],</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>purchases:["Purchases","Track each purchase lot and its actual cost."],</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>usage:["Usage","Record where your inventory goes."],</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>suppliers:["Suppliers","Keep your purchasing contacts in one place."],</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>workflows:["Workflows","Plan, assign, and move work through your process."]</span></p>
+<p class="p1"><span class="s1">};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">let state=empty(),view="overview",revision=0,savedAt="",raw=null;</span></p>
+<p class="p1"><span class="s1">let mode="",editing="",timer,blocked=false;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function notify(message){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>$("toast").textContent=message;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>$("toast").classList.remove("hidden");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>clearTimeout(timer);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>timer=setTimeout(()=&gt;$("toast").classList.add("hidden"),6500);</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">function validDate(d,optional=false){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(optional&amp;&amp;d==="")return true;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return typeof d==="string"&amp;&amp;/^\d{4}-\d{2}-\d{2}$/.test(d)&amp;&amp;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>Number.isFinite(Date.parse(d))&amp;&amp;new Date(d).toISOString().slice(0,10)===d;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">function safeURL(v){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(!v)return "";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const u=new URL(v);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(!["http:","https:"].includes(u.protocol))throw Error("Use an http:// or https:// URL.");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return u.href;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">function validate(s){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(!s||typeof s!=="object")throw Error("Invalid backup.");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(s.tasks===undefined)s.tasks=[];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>for(const key of ["products","suppliers","orders","lots","usages","tasks"]){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(!Array.isArray(s[key]))throw Error("Missing table: "+key);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const ids=new Set();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>for(const row of s[key]){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if(!row||typeof row.id!=="string"||!row.id||ids.has(row.id))throw Error("Invalid or duplicate ID in "+key);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>ids.add(row.id);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const text=v=&gt;typeof v==="string"&amp;&amp;v.length&lt;=10000;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const value=(v,positive=false)=&gt;typeof v==="number"&amp;&amp;Number.isFinite(v)&amp;&amp;(positive?v&gt;0:v&gt;=0)&amp;&amp;v&lt;=1e12;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const ps=new Set(s.products.map(p=&gt;p.id)),ss=new Set(s.suppliers.map(x=&gt;x.id));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const os=new Set(s.orders.map(o=&gt;o.id)),ls=new Map(s.lots.map(l=&gt;[l.id,l]));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>for(const p of s.products)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(!text(p.name)||!p.name.trim()||!text(p.variant)||!text(p.unit)||!p.unit.trim()||!text(p.location))</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>throw Error("Invalid product.");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>for(const x of s.suppliers){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(!text(x.name)||!x.name.trim()||!text(x.url))throw Error("Invalid supplier.");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>safeURL(x.url);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>for(const o of s.orders){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(!ss.has(o.supplierId)||!validDate(o.date,true)||!value(o.total)||!text(o.source)||!text(o.dateType)||!text(o.url))</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>throw Error("Invalid order.");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>safeURL(o.url);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>for(const l of s.lots)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(!ps.has(l.productId)||!os.has(l.orderId)||!value(l.qty,true)||!value(l.cost)||</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>typeof l.estimated!=="boolean"||(l.pending!==undefined&amp;&amp;typeof l.pending!=="boolean"))</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>throw Error("Invalid lot.");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const used=new Map();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>for(const u of s.usages){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(!ls.has(u.lotId)||!value(u.qty,true)||!validDate(u.date)||!text(u.person)||!text(u.note))</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>throw Error("Invalid usage record.");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>used.set(u.lotId,(used.get(u.lotId)||0)+u.qty);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>for(const [id,q] of used)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(ls.get(id).pending||q&gt;ls.get(id).qty+1e-8)throw Error("Usage exceeds available stock.");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>for(const t of s.tasks)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(!text(t.title)||!t.title.trim()||!text(t.description)||!text(t.assignee)||</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>!stages.includes(t.status)||!["Low","Medium","High"].includes(t.priority)||</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>!validDate(t.due,true)||!text(t.productId)||(t.productId&amp;&amp;!ps.has(t.productId)))</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>throw Error("Invalid workflow task.");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return s;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">try{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>raw=localStorage.getItem(KEY);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(raw){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const d=JSON.parse(raw);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>state=validate(d.state);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>revision=d.revision||0;savedAt=d.savedAt||"";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1">}catch(e){blocked=true;notify("Cannot load saved data. Original storage has not been overwritten. "+e.message);}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function commit(next){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(blocked)throw Error("Storage is unavailable or damaged. Export a recovery copy before continuing.");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>validate(next);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(localStorage.getItem(KEY)!==raw)throw Error("Another tab changed the data. Refresh before saving.");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const d={version:1,state:next,revision:revision+1,savedAt:new Date().toISOString()};</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const nextRaw=JSON.stringify(d);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(raw)localStorage.setItem(PREVIOUS,raw);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>localStorage.setItem(KEY,nextRaw);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>state=next;revision=d.revision;savedAt=d.savedAt;raw=nextRaw;render();</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">const product=id=&gt;state.products.find(p=&gt;p.id===id);</span></p>
+<p class="p1"><span class="s1">const supplier=id=&gt;state.suppliers.find(s=&gt;s.id===id);</span></p>
+<p class="p1"><span class="s1">const order=id=&gt;state.orders.find(o=&gt;o.id===id);</span></p>
+<p class="p1"><span class="s1">const remaining=l=&gt;l.pending?0:Math.max(0,Math.round((l.qty-state.usages.filter(u=&gt;u.lotId===l.id).reduce((a,u)=&gt;a+u.qty,0))*1e8)/1e8);</span></p>
+<p class="p1"><span class="s1">function stock(p){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const lots=state.lots.filter(l=&gt;l.productId===p.id);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>qty:lots.reduce((a,l)=&gt;a+remaining(l),0),</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>value:lots.reduce((a,l)=&gt;a+remaining(l)*l.cost/l.qty,0),</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>pending:lots.filter(l=&gt;l.pending).reduce((a,l)=&gt;a+l.qty,0)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>};</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">const btn=(a,id,label,cls="small")=&gt;`&lt;button class="${cls}" data-action="${a}" data-id="${esc(id)}"&gt;${esc(label)}&lt;/button&gt;`;</span></p>
+<p class="p1"><span class="s1">const link=url=&gt;url?`&lt;a class="text-blue-600" href="${esc(safeURL(url))}" target="_blank" rel="noopener noreferrer"&gt;Open ↗&lt;/a&gt;`:"—";</span></p>
+<p class="p1"><span class="s1">const table=(headers,rows)=&gt;`&lt;div class="bg-white border rounded-2xl overflow-auto"&gt;&lt;table class="w-full"&gt;&lt;thead&gt;&lt;tr&gt;${headers.map(h=&gt;`&lt;th&gt;${h}&lt;/th&gt;`).join("")}&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;${rows.length?rows.join(""):`&lt;tr&gt;&lt;td colspan="${headers.length}" class="text-center py-16 text-slate-400"&gt;No records yet. Add an item or import your backup.&lt;/td&gt;&lt;/tr&gt;`}&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;`;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function render(){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>$("title").textContent=views[view][0];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>$("crumb").textContent=views[view][0];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>$("subtitle").textContent=views[view][1];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>$("sectionTitle").textContent=view==="overview"?"Workspace summary":views[view][0];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>$("search").classList.toggle("hidden",view==="overview");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>$("nav").innerHTML=Object.entries(views).map(([id,[title]])=&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>`&lt;button data-view="${id}" class="rounded-xl px-4 py-3 text-sm text-left whitespace-nowrap ${view===id?"active":"text-slate-500"}"&gt;${esc(title)}&lt;/button&gt;`).join("");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>$("actions").innerHTML=view==="workflows"?btn("task","","＋ New task","primary"):</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>view==="suppliers"?btn("supplier","","＋ Add supplier","primary"):</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>view==="usage"?btn("use","","＋ Record usage","primary"):</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>btn("product","","＋ Add product","secondary")+" "+btn("receive","","＋ Purchase / receive","primary");</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const value=state.products.reduce((a,p)=&gt;a+stock(p).value,0);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const stats=[</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>["PRODUCTS",num(state.products.length),"Distinct products and variants"],</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>["STOCK VALUE",money(value),"Received stock still available"],</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>["INCOMING LOTS",num(state.lots.filter(l=&gt;l.pending).length),"Not included in available stock"],</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>["OPEN TASKS",num(state.tasks.filter(t=&gt;t.status!=="Done").length),"Across your workflow"]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>$("stats").innerHTML=stats.map(([a,b,c])=&gt;`&lt;div class="bg-white border rounded-2xl p-5"&gt;&lt;p class="text-[10px] tracking-widest text-slate-400"&gt;${a}&lt;/p&gt;&lt;p class="text-2xl font-bold mt-3"&gt;${b}&lt;/p&gt;&lt;p class="muted mt-2"&gt;${c}&lt;/p&gt;&lt;/div&gt;`).join("");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const q=$("search").value.toLowerCase().trim(),match=(...v)=&gt;v.join(" ").toLowerCase().includes(q);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>let rows=[];</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(view==="overview"){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const totals=stages.map(s=&gt;[s,state.tasks.filter(t=&gt;t.status===s).length]);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const top=[...state.products].sort((a,b)=&gt;stock(b).value-stock(a).value).slice(0,5);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>$("content").innerHTML=`</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="grid xl:grid-cols-2 gap-5"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;section class="bg-white border rounded-2xl p-6"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="flex justify-between mb-6"&gt;&lt;h3 class="font-semibold"&gt;Workflow progress&lt;/h3&gt;&lt;button data-view="workflows" class="text-sm text-blue-600"&gt;View board →&lt;/button&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>${totals.map(([s,n])=&gt;`&lt;div class="mb-5"&gt;&lt;div class="flex justify-between text-sm mb-2"&gt;&lt;span&gt;${s}&lt;/span&gt;&lt;b&gt;${n}&lt;/b&gt;&lt;/div&gt;&lt;div class="h-2 rounded bg-slate-100"&gt;&lt;div class="h-2 rounded bg-blue-500" style="width:${state.tasks.length?n/state.tasks.length*100:0}%"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;`).join("")}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;p class="muted"&gt;Workflow tasks organize work. Stock changes only through purchase, receipt, and usage actions.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;section class="bg-white border rounded-2xl p-6"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;h3 class="font-semibold mb-5"&gt;Highest stock value&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>${top.length?top.map(p=&gt;`&lt;div class="flex justify-between gap-3 py-4 border-b"&gt;&lt;div&gt;&lt;b class="text-sm"&gt;${esc(p.name)}&lt;/b&gt;&lt;p class="muted"&gt;${esc(p.variant)}&lt;/p&gt;&lt;/div&gt;&lt;span class="text-sm font-semibold"&gt;${money(stock(p).value)}&lt;/span&gt;&lt;/div&gt;`).join(""):'&lt;p class="text-slate-400 text-sm py-10"&gt;Import your inventory backup or add your first product.&lt;/p&gt;'}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(view==="inventory"){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>rows=state.products.filter(p=&gt;match(p.name,p.variant,p.id,p.location)).map(p=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const s=stock(p);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>return `&lt;tr&gt;&lt;td&gt;&lt;b&gt;${esc(p.name)}&lt;/b&gt;&lt;p class="muted mt-1"&gt;${esc(p.variant)} · ${esc(p.id)}&lt;/p&gt;&lt;/td&gt;&lt;td&gt;${esc(p.location)||"—"}&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;td&gt;&lt;b class="${s.qty?"text-emerald-600":"text-slate-400"}"&gt;${num(s.qty)}&lt;/b&gt; ${esc(p.unit)}${s.pending?`&lt;p class="text-amber-600 text-xs mt-1"&gt;${num(s.pending)} incoming&lt;/p&gt;`:""}&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;td&gt;${money(s.value)}&lt;/td&gt;&lt;td&gt;&lt;div class="flex gap-2"&gt;${btn("product",p.id,"Edit")}${btn("receive",p.id,"Buy")}${btn("use",p.id,"Use")}&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>$("content").innerHTML=table(["Product","Location","Available","Value","Actions"],rows);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(view==="purchases"){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>rows=[...state.lots].reverse().filter(l=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const p=product(l.productId),o=order(l.orderId);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>return match(p.name,p.variant,l.id,o.id,o.source,supplier(o.supplierId).name);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}).map(l=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const p=product(l.productId),o=order(l.orderId);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>return `&lt;tr&gt;&lt;td&gt;&lt;b&gt;${esc(p.name)}&lt;/b&gt;&lt;p class="muted"&gt;${esc(p.variant)} · ${esc(l.id)}&lt;/p&gt;&lt;p class="muted mt-1"&gt;${esc(o.source)}&lt;/p&gt;&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;td&gt;${esc(supplier(o.supplierId).name)}&lt;div class="mt-1"&gt;${link(o.url)}&lt;/div&gt;&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;td&gt;${fmt(o.date)}&lt;p class="muted"&gt;${esc(o.dateType)}&lt;/p&gt;&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;td&gt;&lt;span class="badge"&gt;${l.pending?"Incoming":"Received"}&lt;/span&gt;&lt;p class="mt-2"&gt;${num(l.qty)} ${esc(p.unit)}&lt;/p&gt;&lt;p class="muted"&gt;${num(remaining(l))} available&lt;/p&gt;&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;td&gt;${money(l.cost/l.qty)}&lt;/td&gt;&lt;td&gt;${money(l.cost)}&lt;p class="muted"&gt;${l.estimated?"Estimated":"Confirmed"}&lt;/p&gt;&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;td&gt;&lt;div class="flex gap-2"&gt;${l.pending?btn("confirm",l.id,"Receive all"):""}${btn("cost",l.id,"Edit cost")}&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>$("content").innerHTML=table(["Product / lot","Supplier","Date","Quantity","Unit cost","Lot cost","Actions"],rows);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(view==="usage"){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>rows=[...state.usages].reverse().filter(u=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const l=state.lots.find(l=&gt;l.id===u.lotId);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>return match(product(l.productId).name,u.person,u.note);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}).map(u=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const l=state.lots.find(l=&gt;l.id===u.lotId),p=product(l.productId);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>return `&lt;tr&gt;&lt;td&gt;${fmt(u.date)}&lt;/td&gt;&lt;td&gt;&lt;b&gt;${esc(p.name)}&lt;/b&gt;&lt;p class="muted"&gt;${esc(p.variant)}&lt;/p&gt;&lt;/td&gt;&lt;td&gt;${num(u.qty)} ${esc(p.unit)}&lt;/td&gt;&lt;td&gt;${money(u.qty*l.cost/l.qty)}&lt;/td&gt;&lt;td&gt;${esc(u.person)}&lt;/td&gt;&lt;td&gt;${esc(u.note)}&lt;/td&gt;&lt;/tr&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>$("content").innerHTML=table(["Date","Product","Quantity","Cost","Used by","Purpose"],rows);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(view==="suppliers"){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>rows=state.suppliers.filter(s=&gt;match(s.name,s.url)).map(s=&gt;`&lt;tr&gt;&lt;td&gt;&lt;b&gt;${esc(s.name)}&lt;/b&gt;&lt;/td&gt;&lt;td&gt;${link(s.url)}&lt;/td&gt;&lt;td&gt;${state.orders.filter(o=&gt;o.supplierId===s.id).length}&lt;/td&gt;&lt;td&gt;${btn("supplier",s.id,"Edit")}&lt;/td&gt;&lt;/tr&gt;`);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>$("content").innerHTML=table(["Supplier","Link","Orders","Actions"],rows);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(view==="workflows"){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>$("content").innerHTML=`&lt;div class="grid md:grid-cols-2 2xl:grid-cols-4 gap-4"&gt;${stages.map((stage,index)=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const tasks=state.tasks.filter(t=&gt;t.status===stage&amp;&amp;match(t.title,t.description,t.assignee,product(t.productId)?.name));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>return `&lt;section class="bg-slate-100/80 border rounded-2xl p-3 min-h-64"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="flex justify-between items-center p-2 mb-3"&gt;&lt;h3 class="text-sm font-semibold"&gt;${stage}&lt;/h3&gt;&lt;span class="text-xs bg-white border rounded px-2 py-1"&gt;${tasks.length}&lt;/span&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="space-y-3"&gt;${tasks.map(t=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>const overdue=t.due&amp;&amp;t.due&lt;today()&amp;&amp;t.status!=="Done";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>const color=t.priority==="High"?"text-red-600 bg-red-50":t.priority==="Medium"?"text-amber-700 bg-amber-50":"text-blue-600 bg-blue-50";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>return `&lt;article class="bg-white border rounded-xl p-4 shadow-sm"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="flex justify-between items-center mb-3"&gt;&lt;span class="text-[10px] px-2 py-1 rounded ${color}"&gt;${esc(t.priority)} priority&lt;/span&gt;${btn("task",t.id,"Edit")}&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h4 class="font-semibold text-sm break-words"&gt;${esc(t.title)}&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p class="text-xs text-slate-500 mt-2 whitespace-pre-wrap break-words"&gt;${esc(t.description)}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>${t.productId?`&lt;p class="badge mt-3"&gt;${esc(product(t.productId).name)}&lt;/p&gt;`:""}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="flex flex-wrap justify-between gap-2 text-xs mt-4 pt-3 border-t"&gt;&lt;span&gt;${esc(t.assignee)||"Unassigned"}&lt;/span&gt;&lt;span class="${overdue?"text-red-600":"text-slate-400"}"&gt;${t.due?fmt(t.due):"No due date"}${overdue?" · Overdue":""}&lt;/span&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="flex justify-between mt-3"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>${index?`&lt;button class="small" data-move="${esc(t.id)}" data-stage="${stages[index-1]}"&gt;← Back&lt;/button&gt;`:"&lt;span&gt;&lt;/span&gt;"}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>${index&lt;3?`&lt;button class="small text-blue-600" data-move="${esc(t.id)}" data-stage="${stages[index+1]}"&gt;Next →&lt;/button&gt;`:'&lt;span class="text-xs text-emerald-600"&gt;✓ Complete&lt;/span&gt;'}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/article&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}).join("")||'&lt;p class="text-xs text-slate-400 text-center py-8"&gt;No tasks in this stage&lt;/p&gt;'}&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/section&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}).join("")}&lt;/div&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>$("saved").textContent=savedAt?`Last saved ${new Date(savedAt).toLocaleString()} · Revision ${revision}`:"No data saved yet.";</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function input(label,name,value="",type="text",required=true,full=false){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return `&lt;label class="${full?"sm:col-span-2":""}"&gt;${esc(label)}&lt;input name="${name}" value="${esc(value)}" type="${type}" ${required?"required":""} ${type==="number"?'min="0" step="any"':'maxlength="2000"'}&gt;&lt;/label&gt;`;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">function select(label,name,options,value="",required=true){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return `&lt;label class="sm:col-span-2"&gt;${esc(label)}&lt;select name="${name}" ${required?"required":""}&gt;&lt;option value=""&gt;${required?"Select…":"None"}&lt;/option&gt;${options.map(([id,title])=&gt;`&lt;option value="${esc(id)}" ${id===value?"selected":""}&gt;${esc(title)}&lt;/option&gt;`).join("")}&lt;/select&gt;&lt;/label&gt;`;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">function openForm(action,id=""){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>mode=action;editing=id;$("error").textContent="";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>let fields="",title="";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(action==="product"){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const p=product(id)||{};</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>title=id?"Edit product":"Add product";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>fields=input("Product name","name",p.name||"","text",true,true)+input("Variant / model","variant",p.variant||"","text",false,true)+input("Unit","unit",p.unit||"pcs")+input("Storage location","location",p.location||"","text",false);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(action==="supplier"){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const s=supplier(id)||{};</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>title=id?"Edit supplier":"Add supplier";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>fields=input("Supplier name","name",s.name||"","text",true,true)+input("Shop URL","url",s.url||"","url",false,true);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(action==="receive"){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(!state.products.length||!state.suppliers.length)return notify("Add a product and supplier first.");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>title="Purchase / receive stock";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>fields=select("Product","productId",state.products.map(p=&gt;[p.id,p.name+" · "+p.variant]),id)+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>select("Supplier","supplierId",state.suppliers.map(s=&gt;[s.id,s.name]))+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>select("Status","status",[["received","Received"],["pending","Incoming / not received"]],"received")+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>input("Record / receipt date","date",today(),"date")+input("Quantity in product units","qty","","number")+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>input("Net cost of the entire lot (THB)","cost","","number",true,true)+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>input("Order reference / notes","source","","text",false,true)+input("Product / order URL","url","","url",false,true)+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>'&lt;p class="sm:col-span-2 muted"&gt;Use the cost after discounts, including allocated shipping. Each purchase keeps its own cost.&lt;/p&gt;';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(action==="use"){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const available=state.lots.filter(l=&gt;remaining(l)&gt;0&amp;&amp;(!id||l.productId===id));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(!available.length)return notify("No available stock to use.");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>title="Record stock usage";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>fields=select("Stock lot","lotId",available.map(l=&gt;[l.id,`${product(l.productId).name} · ${l.id} · ${num(remaining(l))} available`]),available.length===1?available[0].id:"")+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>input("Quantity","qty","","number")+input("Date","date",today(),"date")+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>input("Used by","person","","text",true,true)+input("Purpose / notes","note","","text",true,true);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(action==="confirm"){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>title="Receive the full lot";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>fields=input("Actual receipt date","date",today(),"date",true,true)+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>'&lt;p class="sm:col-span-2 muted"&gt;Confirm only when the entire ordered quantity has arrived. This updates the existing lot without creating a duplicate purchase.&lt;/p&gt;';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(action==="cost"){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>title="Correct lot cost";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>fields=input("Net total lot cost (THB)","cost",state.lots.find(l=&gt;l.id===id).cost,"number",true,true)+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>'&lt;p class="sm:col-span-2 muted"&gt;This recalculates remaining stock value and historical usage cost for this lot. The original order total is unchanged.&lt;/p&gt;';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(action==="task"){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const t=state.tasks.find(t=&gt;t.id===id)||{};</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>title=id?"Edit workflow task":"New workflow task";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>fields=input("Task title","title",t.title||"","text",true,true)+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>`&lt;label class="sm:col-span-2"&gt;Description&lt;textarea name="description" rows="3" maxlength="10000"&gt;${esc(t.description||"")}&lt;/textarea&gt;&lt;/label&gt;`+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>input("Assignee","assignee",t.assignee||"","text",false)+input("Due date","due",t.due||"","date",false)+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>select("Stage","status",stages.map(s=&gt;[s,s]),t.status||"Backlog")+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>select("Priority","priority",["Low","Medium","High"].map(s=&gt;[s,s]),t.priority||"Medium")+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>select("Related product","productId",state.products.map(p=&gt;[p.id,p.name+" · "+p.variant]),t.productId||"",false);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>$("modalTitle").textContent=title;$("fields").innerHTML=fields;$("modal").showModal();</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">$("form").addEventListener("submit",e=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>e.preventDefault();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>try{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const f=Object.fromEntries(new FormData(e.target)),next=copy(state);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const amount=(name,positive=false)=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const v=Number(f[name]);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if(f[name]===""||!Number.isFinite(v)||(positive?v&lt;=0:v&lt;0)||v&gt;1e9)throw Error("Enter a valid quantity or cost.");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>return v;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>};</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(mode==="product"){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const p={id:editing||uid("P"),name:f.name.trim(),variant:f.variant.trim(),unit:f.unit.trim(),location:f.location.trim()};</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const i=next.products.findIndex(p=&gt;p.id===editing);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if(i&gt;=0){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if(next.lots.some(l=&gt;l.productId===editing)&amp;&amp;p.unit!==next.products[i].unit)throw Error("Cannot change units after purchasing stock.");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>next.products[i]=p;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>}else next.products.push(p);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(mode==="supplier"){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const s={id:editing||uid("S"),name:f.name.trim(),url:safeURL(f.url.trim())};</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const i=next.suppliers.findIndex(s=&gt;s.id===editing);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if(i&gt;=0)next.suppliers[i]=s;else next.suppliers.push(s);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(mode==="receive"){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const id=uid("O"),cost=amount("cost"),pending=f.status==="pending";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>next.orders.push({id,date:f.date,dateType:pending?"Recorded / incoming":"Received",supplierId:f.supplierId,total:cost,source:f.source.trim()||"Manual entry",url:safeURL(f.url.trim())});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>next.lots.push({id:uid("L"),productId:f.productId,orderId:id,qty:amount("qty",true),cost,estimated:false,pending});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(mode==="use"){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const l=state.lots.find(l=&gt;l.id===f.lotId),qty=amount("qty",true);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if(!l||qty&gt;remaining(l)+1e-8)throw Error("Quantity exceeds available stock.");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>next.usages.push({id:uid("U"),lotId:l.id,qty,date:f.date,person:f.person.trim(),note:f.note.trim()});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(mode==="confirm"){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const l=next.lots.find(l=&gt;l.id===editing);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if(!l?.pending)throw Error("This lot is not awaiting receipt.");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>l.pending=false;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const o=next.orders.find(o=&gt;o.id===l.orderId);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>o.date=f.date;o.dateType="Received";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(mode==="cost"){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const l=next.lots.find(l=&gt;l.id===editing);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>l.cost=amount("cost");l.estimated=false;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(mode==="task"){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const old=next.tasks.find(t=&gt;t.id===editing);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const t={id:editing||uid("T"),title:f.title.trim(),description:f.description.trim(),assignee:f.assignee.trim(),</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>due:f.due,status:f.status,priority:f.priority,productId:f.productId,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>createdAt:old?.createdAt||new Date().toISOString(),updatedAt:new Date().toISOString()};</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const i=next.tasks.findIndex(t=&gt;t.id===editing);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if(i&gt;=0)next.tasks[i]=t;else next.tasks.push(t);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>commit(next);$("modal").close();notify("Saved successfully.");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}catch(e){$("error").textContent=e.message;}</span></p>
+<p class="p1"><span class="s1">});</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">document.addEventListener("click",e=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const nav=e.target.closest("[data-view]");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(nav){view=nav.dataset.view;$("search").value="";render();}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const action=e.target.closest("[data-action]");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(action)openForm(action.dataset.action,action.dataset.id||"");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const move=e.target.closest("[data-move]");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(move){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>try{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const next=copy(state),t=next.tasks.find(t=&gt;t.id===move.dataset.move);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if(!t)throw Error("Task not found.");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>t.status=move.dataset.stage;t.updatedAt=new Date().toISOString();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>commit(next);notify("Moved to "+t.status);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}catch(e){notify(e.message);}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1">});</span></p>
+<p class="p1"><span class="s1">$("search").oninput=render;</span></p>
+<p class="p1"><span class="s1">$("close").onclick=$("cancel").onclick=()=&gt;$("modal").close();</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function download(name,text){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const url=URL.createObjectURL(new Blob([text],{type:"application/json"}));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const a=document.createElement("a");a.href=url;a.download=name;a.click();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>setTimeout(()=&gt;URL.revokeObjectURL(url),1000);</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">$("backup").onclick=()=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(blocked&amp;&amp;raw){download("management-os-recovery.json",raw);return;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>download(`management-os-${today()}-r${revision}.json`,JSON.stringify({version:1,state,revision,savedAt},null,2));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>notify("Backup downloaded.");</span></p>
+<p class="p1"><span class="s1">};</span></p>
+<p class="p1"><span class="s1">$("import").onclick=()=&gt;$("file").click();</span></p>
+<p class="p1"><span class="s1">$("file").onchange=async e=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const file=e.target.files[0];if(!file)return;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>try{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(file.size&gt;20*1024*1024)throw Error("Maximum file size is 20 MB.");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const doc=JSON.parse(await file.text());</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const next=validate(doc.state||doc);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(!confirm(`Replace current data with ${next.products.length} products, ${next.orders.length} orders, and ${next.tasks.length} tasks?\nDownload a backup of your current data first.`))return;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>commit(copy(next));notify("Backup imported successfully.");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}catch(e){notify("Import failed: "+e.message);}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>finally{$("file").value="";}</span></p>
+<p class="p1"><span class="s1">};</span></p>
+<p class="p1"><span class="s1">window.addEventListener("storage",e=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if(e.key===KEY)notify("Data changed in another tab. Refresh before making further changes.");</span></p>
+<p class="p1"><span class="s1">});</span></p>
+<p class="p1"><span class="s1">render();</span></p>
+<p class="p1"><span class="s1">&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+</body>
+</html>
