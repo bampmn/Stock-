@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Management OS</title>
+<meta name="app-version" content="public-view-2026-10-04">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <style>
@@ -29,9 +30,9 @@
 </style>
 </head>
 <body>
-<section id="login" class="max-w-md mx-auto mt-20 bg-white border rounded-2xl p-8">
-<h1 class="text-2xl font-bold mb-3">Management OS</h1><p class="text-sm text-slate-500 mb-5">Sign in to your online inventory.</p>
-<form id="loginForm"><label>Email<input id="email" type="email" required value="bamnrllll@gmail.com"></label><button id="sendLink" class="primary mt-4" type="submit">Send sign-in link</button></form><p id="loginMessage" role="status" class="mt-4 text-sm"></p></section>
+<section hidden id="login" class="max-w-md mx-auto mt-20 bg-white border rounded-2xl p-8">
+<h1 class="text-2xl font-bold mb-3">Management OS</h1><p class="text-sm text-slate-500 mb-5">Administrator sign-in. Everyone else can view without signing in.</p>
+<button id="backToView" type="button" class="small mb-4">Continue viewing</button><form id="loginForm"><label>Email<input id="email" type="email" required value="bamnrllll@gmail.com"></label><button id="sendLink" class="primary mt-4" type="submit">Send sign-in link</button></form><p id="loginMessage" role="status" class="mt-4 text-sm"></p></section>
 <div id="workspace" hidden><div class="min-h-screen lg:flex">
   <aside class="bg-white border-r border-slate-200 p-5 lg:w-60 lg:fixed lg:inset-y-0 lg:overflow-auto">
     <div class="flex items-center gap-3 mb-8">
@@ -53,7 +54,7 @@
   <main class="lg:ml-60 flex-1 min-w-0">
     <header class="bg-white border-b px-6 py-4 flex justify-between items-center">
       <div class="text-sm text-slate-400">Workspace <span class="mx-2">/</span><span id="crumb" class="text-slate-600"></span></div>
-      <div class="flex gap-2"><button id="refreshCloud" class="small">Refresh online data</button><button id="logout" class="small">Sign out</button></div>
+      <div class="flex gap-2"><button id="refreshCloud" class="small">Refresh online data</button><span id="accessLabel" class="badge">View-only</span><button id="adminLogin" class="small">Administrator sign-in</button><button id="logout" class="small">Sign out</button></div>
     </header>
     <div class="p-5 md:p-8 max-w-[1600px] mx-auto">
       <div class="flex flex-wrap justify-between items-start gap-4 mb-7">
@@ -186,6 +187,8 @@ function validate(s){
   return s;
 }
 const OWNER="bamnrllll@gmail.com";
+
+let canEdit=false;
 const cloud=window.supabase.createClient("https://gukiufopxxmloypyiruw.supabase.co","sb_publishable_cXJIqcBya6HV5wNOi2BB3w_y5_pP_4K");
 let authenticated=false,saving=false;
 async function loadCloud(){
@@ -195,6 +198,7 @@ async function loadCloud(){
 }
 async function commit(next){
  if(!authenticated)throw Error('Please sign in first.');
+ if(!canEdit)throw Error('This account has view-only access.');
  if(saving)throw Error('A save is already in progress. Please wait.');
  validate(next);saving=true;
  try{
@@ -205,17 +209,20 @@ async function commit(next){
  }finally{saving=false;}
 }
 async function startSession(){
+ canEdit=false;authenticated=false;
  try{
- const {data,error}=await cloud.auth.getUser();
- if(error||!data.user){authenticated=false;$('workspace').hidden=true;$('login').hidden=false;return;}
- if(data.user.email?.toLowerCase()!==OWNER)throw Error('This account is not authorized. Sign out and use the administrator email.');
- await loadCloud();authenticated=true;$('workspace').hidden=false;$('login').hidden=true;
- }catch(e){authenticated=false;$('workspace').hidden=true;$('login').hidden=false;$('loginMessage').textContent=e.message;}
+ const {data}=await cloud.auth.getUser();
+ authenticated=!!data.user;canEdit=data.user?.email?.toLowerCase()===OWNER;
+ await loadCloud();$('workspace').hidden=false;$('login').hidden=true;
+ }catch(e){canEdit=false;render();$('workspace').hidden=false;$('login').hidden=true;notify(e.message);}
 }
+$('adminLogin').onclick=()=>{$('workspace').hidden=true;$('login').hidden=false;};
+$('backToView').onclick=()=>{$('workspace').hidden=false;$('login').hidden=true;};
 $('loginForm').onsubmit=async e=>{
  e.preventDefault();$('sendLink').disabled=true;
  try{
- if($('email').value.trim().toLowerCase()!==OWNER)throw Error('Use the administrator email for this workspace.');
+ const email=$('email').value.trim().toLowerCase();
+ if(email!==OWNER)throw Error('Only the administrator needs to sign in. Use Continue viewing for read-only access.');
  const {error}=await cloud.auth.signInWithOtp({email:$('email').value.trim(),options:{emailRedirectTo:location.origin+'/'}});
  if(error)throw error;$('loginMessage').textContent='Check your email and open the sign-in link. You can close this page.';
  }catch(e){$('loginMessage').textContent=e.message;}finally{$('sendLink').disabled=false;}
@@ -223,7 +230,7 @@ $('loginForm').onsubmit=async e=>{
 $('logout').onclick=async()=>{await cloud.auth.signOut();location.reload();};
 $('refreshCloud').onclick=async()=>{if(saving)return;try{await loadCloud();notify('Online data refreshed.');}catch(e){notify(e.message)}};
 cloud.auth.onAuthStateChange((event)=>{
- if(event==='SIGNED_OUT'){authenticated=false;state=empty();revision=0;$('modal').close();render();$('workspace').hidden=true;$('login').hidden=false;}
+ if(event==='SIGNED_OUT'){authenticated=false;canEdit=false;state=empty();revision=0;$('modal').close();render();$('workspace').hidden=false;$('login').hidden=true;setTimeout(startSession,0);}
  if(event==='SIGNED_IN')setTimeout(startSession,0);
 });
 const product=id=>state.products.find(p=>p.id===id);
@@ -243,6 +250,9 @@ const link=url=>url?`<a class="text-blue-600" href="${esc(safeURL(url))}" target
 const table=(headers,rows)=>`<div class="bg-white border rounded-2xl overflow-auto"><table class="w-full"><thead><tr>${headers.map(h=>`<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.length?rows.join(""):`<tr><td colspan="${headers.length}" class="text-center py-16 text-slate-400">No records yet. Add an item or import your backup.</td></tr>`}</tbody></table></div>`;
 
 function render(){
+ $('accessLabel').textContent=canEdit?'Administrator':'View-only';
+ $('adminLogin').hidden=canEdit;$('logout').hidden=!authenticated;
+
   $("title").textContent=views[view][0];
   $("crumb").textContent=views[view][0];
   $("subtitle").textContent=views[view][1];
@@ -343,6 +353,8 @@ function render(){
       </section>`;
     }).join("")}</div>`;
   }
+  document.querySelectorAll("[data-action],[data-move]").forEach(b=>b.hidden=!canEdit);
+  $("import").hidden=!canEdit;
   $("saved").textContent=savedAt?`Last saved ${new Date(savedAt).toLocaleString()} · Revision ${revision}`:"No data saved yet.";
 }
 
@@ -353,6 +365,7 @@ function select(label,name,options,value="",required=true){
   return `<label class="sm:col-span-2">${esc(label)}<select name="${name}" ${required?"required":""}><option value="">${required?"Select…":"None"}</option>${options.map(([id,title])=>`<option value="${esc(id)}" ${id===value?"selected":""}>${esc(title)}</option>`).join("")}</select></label>`;
 }
 function openForm(action,id=""){
+  if(!canEdit)return notify("This account has view-only access.");
   mode=action;editing=id;$("error").textContent="";
   let fields="",title="";
   if(action==="product"){
@@ -469,6 +482,7 @@ document.addEventListener("click",async e=>{
   if(action)openForm(action.dataset.action,action.dataset.id||"");
   const move=e.target.closest("[data-move]");
   if(move){
+    if(!canEdit)return notify("This account has view-only access.");
     try{
       const next=copy(state),t=next.tasks.find(t=>t.id===move.dataset.move);
       if(!t)throw Error("Task not found.");
