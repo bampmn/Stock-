@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Management OS</title>
-<meta name="app-version" content="public-view-2026-10-04">
+<meta name="app-version" content="bilingual-public-2026-10-04">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <style>
@@ -30,36 +30,37 @@
 </style>
 </head>
 <body>
+<div class="flex justify-end items-center gap-2 px-5 py-2 bg-white border-b sticky top-0 z-40"><label for="language">ภาษา / Language</label><select id="language" style="width:auto" aria-label="ภาษา / Language"><option value="th">ไทย</option><option value="en">English</option></select></div>
 <section hidden id="login" class="max-w-md mx-auto mt-20 bg-white border rounded-2xl p-8">
-<h1 class="text-2xl font-bold mb-3">Management OS</h1><p class="text-sm text-slate-500 mb-5">Administrator sign-in. Everyone else can view without signing in.</p>
-<button id="backToView" type="button" class="small mb-4">Continue viewing</button><form id="loginForm"><label>Email<input id="email" type="email" required value="bamnrllll@gmail.com"></label><button id="sendLink" class="primary mt-4" type="submit">Send sign-in link</button></form><p id="loginMessage" role="status" class="mt-4 text-sm"></p></section>
+<h1 class="text-2xl font-bold mb-3">Management OS</h1><p class="text-sm text-slate-500 mb-5"><span data-i18n="Administrator sign-in. Everyone else can view without signing in.">Administrator sign-in. Everyone else can view without signing in.</span></p>
+<button id="backToView" type="button" class="small mb-4"><span data-i18n="Continue viewing">Continue viewing</span></button><form id="loginForm"><label><span data-i18n="Email">Email</span><input id="email" type="email" required value="bamnrllll@gmail.com"></label><button id="sendLink" class="primary mt-4" type="submit"><span data-i18n="Send sign-in link">Send sign-in link</span></button></form><p id="loginMessage" role="status" class="mt-4 text-sm"></p></section>
 <div id="workspace" hidden><div class="min-h-screen lg:flex">
   <aside class="bg-white border-r border-slate-200 p-5 lg:w-60 lg:fixed lg:inset-y-0 lg:overflow-auto">
     <div class="flex items-center gap-3 mb-8">
       <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center text-xl">▦</div>
-      <div><div class="font-bold">Management OS</div><div class="muted">Your operations workspace</div></div>
+      <div><div class="font-bold">Management OS</div><div class="muted"><span data-i18n="Your operations workspace">Your operations workspace</span></div></div>
     </div>
-    <p class="text-[10px] tracking-widest text-slate-400 mb-3">WORKSPACE</p>
+    <p class="text-[10px] tracking-widest text-slate-400 mb-3"><span data-i18n="WORKSPACE">WORKSPACE</span></p>
     <nav id="nav" class="flex lg:flex-col gap-1 overflow-auto"></nav>
     <div class="mt-8 pt-5 border-t space-y-2">
-      <button id="backup" class="secondary w-full">↓ Backup JSON</button>
-      <button id="import" class="secondary w-full">↑ Import JSON</button>
+      <button id="backup" class="secondary w-full"><span data-i18n="↓ Backup JSON">↓ Backup JSON</span></button>
+      <button id="import" class="secondary w-full"><span data-i18n="↑ Import JSON">↑ Import JSON</span></button>
       <input id="file" type="file" accept=".json,application/json" hidden>
       <p class="text-xs text-slate-400 leading-relaxed pt-3">
-        Inventory is saved to your online database after each successful save. Export backups regularly.
+        <span data-i18n="Inventory is saved to your online database after each successful save. Export backups regularly.">Inventory is saved to your online database after each successful save. Export backups regularly.</span>
       </p>
     </div>
   </aside>
 
   <main class="lg:ml-60 flex-1 min-w-0">
-    <header class="bg-white border-b px-6 py-4 flex justify-between items-center">
-      <div class="text-sm text-slate-400">Workspace <span class="mx-2">/</span><span id="crumb" class="text-slate-600"></span></div>
-      <div class="flex gap-2"><button id="refreshCloud" class="small">Refresh online data</button><span id="accessLabel" class="badge">View-only</span><button id="adminLogin" class="small">Administrator sign-in</button><button id="logout" class="small">Sign out</button></div>
+    <header class="bg-white border-b px-6 py-4 flex justify-between items-center flex-wrap gap-3">
+      <div class="text-sm text-slate-400"><span data-i18n="Workspace">Workspace</span> <span class="mx-2">/</span><span id="crumb" class="text-slate-600"></span></div>
+      <div class="flex flex-wrap gap-2"><button id="refreshCloud" class="small"><span data-i18n="Refresh online data">Refresh online data</span></button><span id="accessLabel" class="badge">View-only</span><button id="adminLogin" class="small"><span data-i18n="Administrator sign-in">Administrator sign-in</span></button><button id="logout" class="small"><span data-i18n="Sign out">Sign out</span></button></div>
     </header>
     <div class="p-5 md:p-8 max-w-[1600px] mx-auto">
       <div class="flex flex-wrap justify-between items-start gap-4 mb-7">
         <div>
-          <p class="text-blue-600 text-xs font-semibold tracking-widest mb-2">CONTROL CENTER</p>
+          <p class="text-blue-600 text-xs font-semibold tracking-widest mb-2"><span data-i18n="CONTROL CENTER">CONTROL CENTER</span></p>
           <h1 id="title" class="text-3xl font-bold"></h1>
           <p id="subtitle" class="text-slate-500 text-sm mt-2"></p>
         </div>
@@ -86,8 +87,8 @@
     <div id="fields" class="grid sm:grid-cols-2 gap-4"></div>
     <p id="error" class="text-red-600 text-sm mt-4" role="alert"></p>
     <div class="flex justify-end gap-2 mt-6 pt-4 border-t">
-      <button id="cancel" type="button" class="secondary">Cancel</button>
-      <button type="submit" class="primary">Save</button>
+      <button id="cancel" type="button" class="secondary"><span data-i18n="Cancel">Cancel</span></button>
+      <button type="submit" class="primary"><span data-i18n="Save">Save</span></button>
     </div>
   </form>
 </dialog>
@@ -95,6 +96,26 @@
 
 <script>
 "use strict";
+
+const translations={"Overview": "ภาพรวม", "Inventory": "คลังสินค้า", "Purchases": "การซื้อ", "Usage": "การเบิกใช้", "Suppliers": "ร้านค้า", "Workflows": "ขั้นตอนงาน", "A clear view of your stock and work.": "ดูภาพรวมสินค้าและงานของคุณ", "Know what is available, incoming, and ready to use.": "ตรวจสอบสินค้าคงเหลือและสินค้ารอรับ", "Track each purchase lot and its actual cost.": "ติดตามการซื้อแต่ละล็อตและต้นทุนจริง", "Record where your inventory goes.": "บันทึกการนำสินค้าไปใช้งาน", "Keep your purchasing contacts in one place.": "รวมข้อมูลร้านค้าไว้ในที่เดียว", "Plan, assign, and move work through your process.": "วางแผน มอบหมาย และติดตามงาน", "Administrator": "ผู้ดูแลระบบ", "View-only": "ดูอย่างเดียว", "Workspace summary": "สรุปภาพรวม", "＋ New task": "＋ เพิ่มงาน", "＋ Add supplier": "＋ เพิ่มร้านค้า", "＋ Record usage": "＋ บันทึกเบิกใช้", "＋ Add product": "＋ เพิ่มสินค้า", "＋ Purchase / receive": "＋ ซื้อ / รับสินค้า", "PRODUCTS": "รายการสินค้า", "STOCK VALUE": "มูลค่าคงเหลือ", "INCOMING LOTS": "ล็อตรอรับ", "OPEN TASKS": "งานที่ยังไม่เสร็จ", "Distinct products and variants": "แยกตามสินค้าและรุ่น", "Received stock still available": "มูลค่าสินค้าที่รับแล้วและยังคงเหลือ", "Not included in available stock": "ยังไม่นับรวมในสินค้าพร้อมใช้", "Across your workflow": "รวมทุกขั้นตอนงาน", "Product": "สินค้า", "Location": "ที่เก็บ", "Available": "พร้อมใช้", "Value": "มูลค่า", "Actions": "จัดการ", "Product / lot": "สินค้า / ล็อต", "Supplier": "ร้านค้า", "Date": "วันที่", "Quantity": "จำนวน", "Unit cost": "ต้นทุนต่อหน่วย", "Lot cost": "ต้นทุนทั้งล็อต", "Cost": "ต้นทุน", "Used by": "ผู้เบิกใช้", "Purpose": "วัตถุประสงค์", "Link": "ลิงก์", "Orders": "คำสั่งซื้อ", "Edit": "แก้ไข", "Buy": "ซื้อเพิ่ม", "Use": "เบิกใช้", "Receive all": "รับสินค้าทั้งหมด", "Edit cost": "แก้ไขต้นทุน", "Incoming": "รอรับ", "Received": "รับแล้ว", "Estimated": "ประมาณการ", "Confirmed": "ยืนยันแล้ว", "Backlog": "งานรอดำเนินการ", "In progress": "กำลังดำเนินการ", "Review": "รอตรวจสอบ", "Done": "เสร็จแล้ว", "Low": "ต่ำ", "Medium": "ปานกลาง", "High": "สูง", "Unassigned": "ยังไม่มอบหมาย", "No due date": "ไม่มีกำหนดส่ง", " · Overdue": " · เกินกำหนด", "Select…": "เลือก…", "None": "ไม่มี", "Edit product": "แก้ไขสินค้า", "Add product": "เพิ่มสินค้า", "Product name": "ชื่อสินค้า", "Variant / model": "รุ่น / แบบ", "Unit": "หน่วย", "Storage location": "สถานที่จัดเก็บ", "Edit supplier": "แก้ไขร้านค้า", "Add supplier": "เพิ่มร้านค้า", "Supplier name": "ชื่อร้านค้า", "Shop URL": "ลิงก์ร้านค้า", "Purchase / receive stock": "ซื้อ / รับสินค้า", "Status": "สถานะ", "Incoming / not received": "รอรับ / ยังไม่ได้รับ", "Record / receipt date": "วันที่บันทึก / รับสินค้า", "Quantity in product units": "จำนวนตามหน่วยสินค้า", "Net cost of the entire lot (THB)": "ต้นทุนสุทธิทั้งล็อต (บาท)", "Order reference / notes": "เลขอ้างอิง / หมายเหตุ", "Product / order URL": "ลิงก์สินค้า / คำสั่งซื้อ", "Record stock usage": "บันทึกการเบิกใช้", "Stock lot": "ล็อตสินค้า", "Purpose / notes": "วัตถุประสงค์ / หมายเหตุ", "Receive the full lot": "รับสินค้าทั้งล็อต", "Actual receipt date": "วันที่รับจริง", "Correct lot cost": "แก้ไขต้นทุนล็อต", "Net total lot cost (THB)": "ต้นทุนสุทธิทั้งล็อต (บาท)", "Edit workflow task": "แก้ไขงาน", "New workflow task": "เพิ่มงานใหม่", "Task title": "ชื่องาน", "Assignee": "ผู้รับผิดชอบ", "Due date": "กำหนดส่ง", "Stage": "ขั้นตอน", "Priority": "ความสำคัญ", "Related product": "สินค้าที่เกี่ยวข้อง", "Unknown date": "ไม่ระบุวันที่", "No data saved yet.": "ยังไม่มีข้อมูลที่บันทึก", "Saved successfully.": "บันทึกเรียบร้อยแล้ว", "Backup downloaded.": "ดาวน์โหลดไฟล์สำรองแล้ว", "Backup imported successfully.": "นำเข้าข้อมูลสำรองแล้ว", "Online data refreshed.": "อัปเดตข้อมูลออนไลน์แล้ว", "Please sign in first.": "กรุณาเข้าสู่ระบบก่อน", "This account has view-only access.": "บัญชีนี้มีสิทธิ์ดูข้อมูลเท่านั้น", "A save is already in progress. Please wait.": "กำลังบันทึก กรุณารอสักครู่", "No save confirmation received.": "ไม่ได้รับการยืนยันการบันทึก", "Only the administrator needs to sign in. Use Continue viewing for read-only access.": "เฉพาะผู้ดูแลต้องเข้าสู่ระบบ กดดูข้อมูลต่อเพื่อดูอย่างเดียว", "Check your email and open the sign-in link. You can close this page.": "ตรวจสอบอีเมลและเปิดลิงก์เข้าสู่ระบบ คุณสามารถปิดหน้านี้ได้", "Add a product and supplier first.": "กรุณาเพิ่มสินค้าและร้านค้าก่อน", "No available stock to use.": "ไม่มีสินค้าคงเหลือให้เบิกใช้", "Enter a valid quantity or cost.": "กรุณาระบุจำนวนหรือต้นทุนที่ถูกต้อง", "Cannot change units after purchasing stock.": "ไม่สามารถเปลี่ยนหน่วยหลังมีการซื้อสินค้าแล้ว", "Quantity exceeds available stock.": "จำนวนเกินสินค้าคงเหลือ", "This lot is not awaiting receipt.": "ล็อตนี้ไม่ได้อยู่ในสถานะรอรับ", "Task not found.": "ไม่พบงาน", "Maximum file size is 20 MB.": "ไฟล์ต้องมีขนาดไม่เกิน 20 MB", "Data changed in another tab. Refresh before making further changes.": "ข้อมูลเปลี่ยนในแท็บอื่น กรุณาโหลดข้อมูลใหม่ก่อนแก้ไข", "Use an http:// or https:// URL.": "กรุณาใช้ลิงก์ http:// หรือ https://", "Invalid backup.": "ไฟล์สำรองไม่ถูกต้อง", "Invalid product.": "ข้อมูลสินค้าไม่ถูกต้อง", "Invalid supplier.": "ข้อมูลร้านค้าไม่ถูกต้อง", "Invalid order.": "ข้อมูลคำสั่งซื้อไม่ถูกต้อง", "Invalid lot.": "ข้อมูลล็อตไม่ถูกต้อง", "Invalid usage record.": "ข้อมูลเบิกใช้ไม่ถูกต้อง", "Usage exceeds available stock.": "จำนวนเบิกใช้เกินสินค้าคงเหลือ", "Invalid workflow task.": "ข้อมูลงานไม่ถูกต้อง", "Administrator sign-in. Everyone else can view without signing in.": "เข้าสู่ระบบสำหรับผู้ดูแล คนอื่นดูข้อมูลได้โดยไม่ต้องเข้าสู่ระบบ", "Continue viewing": "ดูข้อมูลต่อ", "Email": "อีเมล", "Send sign-in link": "ส่งลิงก์เข้าสู่ระบบ", "Your operations workspace": "พื้นที่จัดการงานของคุณ", "WORKSPACE": "พื้นที่ทำงาน", "↓ Backup JSON": "↓ สำรองข้อมูล JSON", "↑ Import JSON": "↑ นำเข้าข้อมูล JSON", "Inventory is saved to your online database after each successful save. Export backups regularly.": "ข้อมูลถูกจัดเก็บในฐานข้อมูลออนไลน์ทุกครั้งที่บันทึกสำเร็จ ควรดาวน์โหลดสำรองเป็นประจำ", "Workspace": "พื้นที่ทำงาน", "Refresh online data": "โหลดข้อมูลออนไลน์ใหม่", "Administrator sign-in": "เข้าสู่ระบบผู้ดูแล", "Sign out": "ออกจากระบบ", "CONTROL CENTER": "ศูนย์จัดการ", "Cancel": "ยกเลิก", "Save": "บันทึก", "Search this view…": "ค้นหาในหน้านี้…", "Search": "ค้นหา", "Close": "ปิด", "Open ↗": "เปิด ↗", "No records yet. Add an item or import your backup.": "ยังไม่มีรายการ กรุณาเพิ่มรายการหรือนำเข้าข้อมูลสำรอง", "Workflow progress": "ความคืบหน้างาน", "View board →": "ดูกระดานงาน →", "Workflow tasks organize work. Stock changes only through purchase, receipt, and usage actions.": "งานใช้สำหรับจัดการขั้นตอนการทำงาน สต็อกจะเปลี่ยนเมื่อซื้อ รับสินค้า หรือเบิกใช้เท่านั้น", "Highest stock value": "สินค้ามูลค่าคงเหลือสูงสุด", "Import your inventory backup or add your first product.": "นำเข้าข้อมูลสำรองหรือเพิ่มสินค้ารายการแรก", "← Back": "← ย้อนกลับ", "Next →": "ถัดไป →", "✓ Complete": "✓ เสร็จแล้ว", "No tasks in this stage": "ยังไม่มีงานในขั้นตอนนี้", "Description": "รายละเอียด", "Use the cost after discounts, including allocated shipping. Each purchase keeps its own cost.": "ใช้ต้นทุนหลังหักส่วนลดรวมค่าจัดส่งที่จัดสรร แต่ละครั้งที่ซื้อจะเก็บต้นทุนแยกกัน", "Confirm only when the entire ordered quantity has arrived. This updates the existing lot without creating a duplicate purchase.": "ยืนยันเมื่อได้รับสินค้าครบทั้งล็อต ระบบจะอัปเดตล็อตเดิมโดยไม่สร้างรายการซื้อซ้ำ", "This recalculates remaining stock value and historical usage cost for this lot. The original order total is unchanged.": "ระบบจะคำนวณมูลค่าคงเหลือและต้นทุนการเบิกใช้ของล็อตนี้ใหม่ ยอดคำสั่งซื้อเดิมไม่เปลี่ยน", "incoming": "รอรับ", "available": "พร้อมใช้", "Last saved": "บันทึกล่าสุด", "Revision": "รุ่นข้อมูล", "Moved to ": "ย้ายไปที่ ", "Import failed: ": "นำเข้าไม่สำเร็จ: ", "Online database is not ready: ": "ฐานข้อมูลออนไลน์ยังไม่พร้อม: "};
+let lang="th";
+try{const saved=localStorage.getItem("management-os-language");if(saved==="en"||saved==="th")lang=saved;}catch{}
+function tr(text){return lang==="th"?(translations[text]||text):text;}
+function applyLanguage(){
+ document.documentElement.lang=lang;
+ document.getElementById("language").value=lang;
+ document.querySelectorAll("[data-i18n]").forEach(el=>el.textContent=tr(el.dataset.i18n));
+ document.getElementById("search").placeholder=tr("Search this view…");
+ document.getElementById("search").setAttribute("aria-label",tr("Search"));
+ document.getElementById("close").setAttribute("aria-label",tr("Close"));
+}
+document.getElementById("language").onchange=e=>{
+ lang=e.target.value;try{localStorage.setItem("management-os-language",lang);}catch{}
+ const modal=document.getElementById("modal"),values=modal.open?Object.fromEntries(new FormData(document.getElementById("form"))):null;
+ render();
+ if(values){openForm(mode,editing);for(const [name,value] of Object.entries(values)){const field=document.getElementById("form").elements.namedItem(name);if(field)field.value=value;}}
+};
+
 
 const $=id=>document.getElementById(id);
 const KEY="management-os-workflows-v1";
@@ -108,7 +129,7 @@ const today=()=>{
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
 };
 const uid=p=>p+"-"+(globalThis.crypto?.randomUUID?.()||Date.now().toString(36)+Math.random().toString(36).slice(2));
-const fmt=d=>d?new Date(d+"T12:00:00").toLocaleDateString():"Unknown date";
+const fmt=d=>d?new Date(d+"T12:00:00").toLocaleDateString(lang==="th"?"th-TH":"en-GB"):tr("Unknown date");
 const empty=()=>({products:[],suppliers:[],orders:[],lots:[],usages:[],tasks:[]});
 const stages=["Backlog","In progress","Review","Done"];
 const views={
@@ -137,11 +158,11 @@ function validDate(d,optional=false){
 function safeURL(v){
   if(!v)return "";
   const u=new URL(v);
-  if(!["http:","https:"].includes(u.protocol))throw Error("Use an http:// or https:// URL.");
+  if(!["http:","https:"].includes(u.protocol))throw Error(tr("Use an http:// or https:// URL."));
   return u.href;
 }
 function validate(s){
-  if(!s||typeof s!=="object")throw Error("Invalid backup.");
+  if(!s||typeof s!=="object")throw Error(tr("Invalid backup."));
   if(s.tasks===undefined)s.tasks=[];
   for(const key of ["products","suppliers","orders","lots","usages","tasks"]){
     if(!Array.isArray(s[key]))throw Error("Missing table: "+key);
@@ -157,33 +178,33 @@ function validate(s){
   const os=new Set(s.orders.map(o=>o.id)),ls=new Map(s.lots.map(l=>[l.id,l]));
   for(const p of s.products)
     if(!text(p.name)||!p.name.trim()||!text(p.variant)||!text(p.unit)||!p.unit.trim()||!text(p.location))
-      throw Error("Invalid product.");
+      throw Error(tr("Invalid product."));
   for(const x of s.suppliers){
-    if(!text(x.name)||!x.name.trim()||!text(x.url))throw Error("Invalid supplier.");
+    if(!text(x.name)||!x.name.trim()||!text(x.url))throw Error(tr("Invalid supplier."));
     safeURL(x.url);
   }
   for(const o of s.orders){
     if(!ss.has(o.supplierId)||!validDate(o.date,true)||!value(o.total)||!text(o.source)||!text(o.dateType)||!text(o.url))
-      throw Error("Invalid order.");
+      throw Error(tr("Invalid order."));
     safeURL(o.url);
   }
   for(const l of s.lots)
     if(!ps.has(l.productId)||!os.has(l.orderId)||!value(l.qty,true)||!value(l.cost)||
        typeof l.estimated!=="boolean"||(l.pending!==undefined&&typeof l.pending!=="boolean"))
-      throw Error("Invalid lot.");
+      throw Error(tr("Invalid lot."));
   const used=new Map();
   for(const u of s.usages){
     if(!ls.has(u.lotId)||!value(u.qty,true)||!validDate(u.date)||!text(u.person)||!text(u.note))
-      throw Error("Invalid usage record.");
+      throw Error(tr("Invalid usage record."));
     used.set(u.lotId,(used.get(u.lotId)||0)+u.qty);
   }
   for(const [id,q] of used)
-    if(ls.get(id).pending||q>ls.get(id).qty+1e-8)throw Error("Usage exceeds available stock.");
+    if(ls.get(id).pending||q>ls.get(id).qty+1e-8)throw Error(tr("Usage exceeds available stock."));
   for(const t of s.tasks)
     if(!text(t.title)||!t.title.trim()||!text(t.description)||!text(t.assignee)||
        !stages.includes(t.status)||!["Low","Medium","High"].includes(t.priority)||
        !validDate(t.due,true)||!text(t.productId)||(t.productId&&!ps.has(t.productId)))
-      throw Error("Invalid workflow task.");
+      throw Error(tr("Invalid workflow task."));
   return s;
 }
 const OWNER="bamnrllll@gmail.com";
@@ -193,18 +214,18 @@ const cloud=window.supabase.createClient("https://gukiufopxxmloypyiruw.supabase.
 let authenticated=false,saving=false;
 async function loadCloud(){
  const {data,error}=await cloud.from('management_inventory').select('*').eq('id','main').maybeSingle();
- if(error)throw Error('Online database is not ready: '+error.message);
+ if(error)throw Error(tr("Online database is not ready: ")+error.message);
  state=data?validate(data.payload):empty();revision=data?Number(data.revision):0;savedAt=data?.updated_at||'';render();
 }
 async function commit(next){
- if(!authenticated)throw Error('Please sign in first.');
- if(!canEdit)throw Error('This account has view-only access.');
- if(saving)throw Error('A save is already in progress. Please wait.');
+ if(!authenticated)throw Error(tr("Please sign in first."));
+ if(!canEdit)throw Error(tr("This account has view-only access."));
+ if(saving)throw Error(tr("A save is already in progress. Please wait."));
  validate(next);saving=true;
  try{
  const {data,error}=await cloud.rpc('save_management_inventory',{expected_revision:revision,new_payload:next});
  if(error)throw Error(error.message+' Your form is still open. Refresh online data if another device changed it.');
- if(!data?.[0])throw Error('No save confirmation received.');
+ if(!data?.[0])throw Error(tr("No save confirmation received."));
  state=validate(data[0].payload);revision=Number(data[0].revision);savedAt=data[0].updated_at;render();
  }finally{saving=false;}
 }
@@ -222,13 +243,13 @@ $('loginForm').onsubmit=async e=>{
  e.preventDefault();$('sendLink').disabled=true;
  try{
  const email=$('email').value.trim().toLowerCase();
- if(email!==OWNER)throw Error('Only the administrator needs to sign in. Use Continue viewing for read-only access.');
+ if(email!==OWNER)throw Error(tr("Only the administrator needs to sign in. Use Continue viewing for read-only access."));
  const {error}=await cloud.auth.signInWithOtp({email:$('email').value.trim(),options:{emailRedirectTo:location.origin+'/'}});
- if(error)throw error;$('loginMessage').textContent='Check your email and open the sign-in link. You can close this page.';
+ if(error)throw error;$('loginMessage').textContent=tr("Check your email and open the sign-in link. You can close this page.");
  }catch(e){$('loginMessage').textContent=e.message;}finally{$('sendLink').disabled=false;}
 };
 $('logout').onclick=async()=>{await cloud.auth.signOut();location.reload();};
-$('refreshCloud').onclick=async()=>{if(saving)return;try{await loadCloud();notify('Online data refreshed.');}catch(e){notify(e.message)}};
+$('refreshCloud').onclick=async()=>{if(saving)return;try{await loadCloud();notify(tr("Online data refreshed."));}catch(e){notify(e.message)}};
 cloud.auth.onAuthStateChange((event)=>{
  if(event==='SIGNED_OUT'){authenticated=false;canEdit=false;state=empty();revision=0;$('modal').close();render();$('workspace').hidden=false;$('login').hidden=true;setTimeout(startSession,0);}
  if(event==='SIGNED_IN')setTimeout(startSession,0);
@@ -246,31 +267,32 @@ function stock(p){
   };
 }
 const btn=(a,id,label,cls="small")=>`<button class="${cls}" data-action="${a}" data-id="${esc(id)}">${esc(label)}</button>`;
-const link=url=>url?`<a class="text-blue-600" href="${esc(safeURL(url))}" target="_blank" rel="noopener noreferrer">Open ↗</a>`:"—";
-const table=(headers,rows)=>`<div class="bg-white border rounded-2xl overflow-auto"><table class="w-full"><thead><tr>${headers.map(h=>`<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.length?rows.join(""):`<tr><td colspan="${headers.length}" class="text-center py-16 text-slate-400">No records yet. Add an item or import your backup.</td></tr>`}</tbody></table></div>`;
+const link=url=>url?`<a class="text-blue-600" href="${esc(safeURL(url))}" target="_blank" rel="noopener noreferrer">${esc(tr("Open ↗"))}</a>`:"—";
+const table=(headers,rows)=>`<div class="bg-white border rounded-2xl overflow-auto"><table class="w-full"><thead><tr>${headers.map(h=>`<th>${esc(tr(h))}</th>`).join("")}</tr></thead><tbody>${rows.length?rows.join(""):`<tr><td colspan="${headers.length}" class="text-center py-16 text-slate-400">${esc(tr("No records yet. Add an item or import your backup."))}</td></tr>`}</tbody></table></div>`;
 
 function render(){
- $('accessLabel').textContent=canEdit?'Administrator':'View-only';
+ applyLanguage();
+ $('accessLabel').textContent=canEdit?tr("Administrator"):tr("View-only");
  $('adminLogin').hidden=canEdit;$('logout').hidden=!authenticated;
 
-  $("title").textContent=views[view][0];
-  $("crumb").textContent=views[view][0];
-  $("subtitle").textContent=views[view][1];
-  $("sectionTitle").textContent=view==="overview"?"Workspace summary":views[view][0];
+  $("title").textContent=tr(views[view][0]);
+  $("crumb").textContent=tr(views[view][0]);
+  $("subtitle").textContent=tr(views[view][1]);
+  $("sectionTitle").textContent=view==="overview"?tr("Workspace summary"):tr(views[view][0]);
   $("search").classList.toggle("hidden",view==="overview");
   $("nav").innerHTML=Object.entries(views).map(([id,[title]])=>
-    `<button data-view="${id}" class="rounded-xl px-4 py-3 text-sm text-left whitespace-nowrap ${view===id?"active":"text-slate-500"}">${esc(title)}</button>`).join("");
-  $("actions").innerHTML=view==="workflows"?btn("task","","＋ New task","primary"):
-    view==="suppliers"?btn("supplier","","＋ Add supplier","primary"):
-    view==="usage"?btn("use","","＋ Record usage","primary"):
-    btn("product","","＋ Add product","secondary")+" "+btn("receive","","＋ Purchase / receive","primary");
+    `<button data-view="${id}" class="rounded-xl px-4 py-3 text-sm text-left whitespace-nowrap ${view===id?"active":"text-slate-500"}">${esc(tr(title))}</button>`).join("");
+  $("actions").innerHTML=view==="workflows"?btn("task","",tr("＋ New task"),"primary"):
+    view==="suppliers"?btn("supplier","",tr("＋ Add supplier"),"primary"):
+    view==="usage"?btn("use","",tr("＋ Record usage"),"primary"):
+    btn("product","",tr("＋ Add product"),"secondary")+" "+btn("receive","",tr("＋ Purchase / receive"),"primary");
 
   const value=state.products.reduce((a,p)=>a+stock(p).value,0);
   const stats=[
-    ["PRODUCTS",num(state.products.length),"Distinct products and variants"],
-    ["STOCK VALUE",money(value),"Received stock still available"],
-    ["INCOMING LOTS",num(state.lots.filter(l=>l.pending).length),"Not included in available stock"],
-    ["OPEN TASKS",num(state.tasks.filter(t=>t.status!=="Done").length),"Across your workflow"]
+    [tr("PRODUCTS"),num(state.products.length),tr("Distinct products and variants")],
+    [tr("STOCK VALUE"),money(value),tr("Received stock still available")],
+    [tr("INCOMING LOTS"),num(state.lots.filter(l=>l.pending).length),tr("Not included in available stock")],
+    [tr("OPEN TASKS"),num(state.tasks.filter(t=>t.status!=="Done").length),tr("Across your workflow")]
   ];
   $("stats").innerHTML=stats.map(([a,b,c])=>`<div class="bg-white border rounded-2xl p-5"><p class="text-[10px] tracking-widest text-slate-400">${a}</p><p class="text-2xl font-bold mt-3">${b}</p><p class="muted mt-2">${c}</p></div>`).join("");
   const q=$("search").value.toLowerCase().trim(),match=(...v)=>v.join(" ").toLowerCase().includes(q);
@@ -282,13 +304,13 @@ function render(){
     $("content").innerHTML=`
       <div class="grid xl:grid-cols-2 gap-5">
         <section class="bg-white border rounded-2xl p-6">
-          <div class="flex justify-between mb-6"><h3 class="font-semibold">Workflow progress</h3><button data-view="workflows" class="text-sm text-blue-600">View board →</button></div>
-          ${totals.map(([s,n])=>`<div class="mb-5"><div class="flex justify-between text-sm mb-2"><span>${s}</span><b>${n}</b></div><div class="h-2 rounded bg-slate-100"><div class="h-2 rounded bg-blue-500" style="width:${state.tasks.length?n/state.tasks.length*100:0}%"></div></div></div>`).join("")}
-          <p class="muted">Workflow tasks organize work. Stock changes only through purchase, receipt, and usage actions.</p>
+          <div class="flex justify-between mb-6"><h3 class="font-semibold">${esc(tr("Workflow progress"))}</h3><button data-view="workflows" class="text-sm text-blue-600">${esc(tr("View board →"))}</button></div>
+          ${totals.map(([s,n])=>`<div class="mb-5"><div class="flex justify-between text-sm mb-2"><span>${esc(tr(s))}</span><b>${n}</b></div><div class="h-2 rounded bg-slate-100"><div class="h-2 rounded bg-blue-500" style="width:${state.tasks.length?n/state.tasks.length*100:0}%"></div></div></div>`).join("")}
+          <p class="muted">${esc(tr("Workflow tasks organize work. Stock changes only through purchase, receipt, and usage actions."))}</p>
         </section>
         <section class="bg-white border rounded-2xl p-6">
-          <h3 class="font-semibold mb-5">Highest stock value</h3>
-          ${top.length?top.map(p=>`<div class="flex justify-between gap-3 py-4 border-b"><div><b class="text-sm">${esc(p.name)}</b><p class="muted">${esc(p.variant)}</p></div><span class="text-sm font-semibold">${money(stock(p).value)}</span></div>`).join(""):'<p class="text-slate-400 text-sm py-10">Import your inventory backup or add your first product.</p>'}
+          <h3 class="font-semibold mb-5">${esc(tr("Highest stock value"))}</h3>
+          ${top.length?top.map(p=>`<div class="flex justify-between gap-3 py-4 border-b"><div><b class="text-sm">${esc(p.name)}</b><p class="muted">${esc(p.variant)}</p></div><span class="text-sm font-semibold">${money(stock(p).value)}</span></div>`).join(""):`<p class="text-slate-400 text-sm py-10">${esc(tr("Import your inventory backup or add your first product."))}</p>`}
         </section>
       </div>`;
   }
@@ -296,10 +318,10 @@ function render(){
     rows=state.products.filter(p=>match(p.name,p.variant,p.id,p.location)).map(p=>{
       const s=stock(p);
       return `<tr><td><b>${esc(p.name)}</b><p class="muted mt-1">${esc(p.variant)} · ${esc(p.id)}</p></td><td>${esc(p.location)||"—"}</td>
-        <td><b class="${s.qty?"text-emerald-600":"text-slate-400"}">${num(s.qty)}</b> ${esc(p.unit)}${s.pending?`<p class="text-amber-600 text-xs mt-1">${num(s.pending)} incoming</p>`:""}</td>
-        <td>${money(s.value)}</td><td><div class="flex gap-2">${btn("product",p.id,"Edit")}${btn("receive",p.id,"Buy")}${btn("use",p.id,"Use")}</div></td></tr>`;
+        <td><b class="${s.qty?"text-emerald-600":"text-slate-400"}">${num(s.qty)}</b> ${esc(p.unit)}${s.pending?`<p class="text-amber-600 text-xs mt-1">${num(s.pending)} ${tr("incoming")}</p>`:""}</td>
+        <td>${money(s.value)}</td><td><div class="flex gap-2">${btn("product",p.id,tr("Edit"))}${btn("receive",p.id,tr("Buy"))}${btn("use",p.id,tr("Use"))}</div></td></tr>`;
     });
-    $("content").innerHTML=table(["Product","Location","Available","Value","Actions"],rows);
+    $("content").innerHTML=table([tr("Product"),tr("Location"),tr("Available"),tr("Value"),tr("Actions")],rows);
   }
   if(view==="purchases"){
     rows=[...state.lots].reverse().filter(l=>{
@@ -310,11 +332,11 @@ function render(){
       return `<tr><td><b>${esc(p.name)}</b><p class="muted">${esc(p.variant)} · ${esc(l.id)}</p><p class="muted mt-1">${esc(o.source)}</p></td>
         <td>${esc(supplier(o.supplierId).name)}<div class="mt-1">${link(o.url)}</div></td>
         <td>${fmt(o.date)}<p class="muted">${esc(o.dateType)}</p></td>
-        <td><span class="badge">${l.pending?"Incoming":"Received"}</span><p class="mt-2">${num(l.qty)} ${esc(p.unit)}</p><p class="muted">${num(remaining(l))} available</p></td>
-        <td>${money(l.cost/l.qty)}</td><td>${money(l.cost)}<p class="muted">${l.estimated?"Estimated":"Confirmed"}</p></td>
-        <td><div class="flex gap-2">${l.pending?btn("confirm",l.id,"Receive all"):""}${btn("cost",l.id,"Edit cost")}</div></td></tr>`;
+        <td><span class="badge">${l.pending?tr("Incoming"):tr("Received")}</span><p class="mt-2">${num(l.qty)} ${esc(p.unit)}</p><p class="muted">${num(remaining(l))} ${tr("available")}</p></td>
+        <td>${money(l.cost/l.qty)}</td><td>${money(l.cost)}<p class="muted">${l.estimated?tr("Estimated"):tr("Confirmed")}</p></td>
+        <td><div class="flex gap-2">${l.pending?btn("confirm",l.id,tr("Receive all")):""}${btn("cost",l.id,tr("Edit cost"))}</div></td></tr>`;
     });
-    $("content").innerHTML=table(["Product / lot","Supplier","Date","Quantity","Unit cost","Lot cost","Actions"],rows);
+    $("content").innerHTML=table([tr("Product / lot"),tr("Supplier"),tr("Date"),tr("Quantity"),tr("Unit cost"),tr("Lot cost"),tr("Actions")],rows);
   }
   if(view==="usage"){
     rows=[...state.usages].reverse().filter(u=>{
@@ -324,100 +346,100 @@ function render(){
       const l=state.lots.find(l=>l.id===u.lotId),p=product(l.productId);
       return `<tr><td>${fmt(u.date)}</td><td><b>${esc(p.name)}</b><p class="muted">${esc(p.variant)}</p></td><td>${num(u.qty)} ${esc(p.unit)}</td><td>${money(u.qty*l.cost/l.qty)}</td><td>${esc(u.person)}</td><td>${esc(u.note)}</td></tr>`;
     });
-    $("content").innerHTML=table(["Date","Product","Quantity","Cost","Used by","Purpose"],rows);
+    $("content").innerHTML=table([tr("Date"),tr("Product"),tr("Quantity"),tr("Cost"),tr("Used by"),tr("Purpose")],rows);
   }
   if(view==="suppliers"){
-    rows=state.suppliers.filter(s=>match(s.name,s.url)).map(s=>`<tr><td><b>${esc(s.name)}</b></td><td>${link(s.url)}</td><td>${state.orders.filter(o=>o.supplierId===s.id).length}</td><td>${btn("supplier",s.id,"Edit")}</td></tr>`);
-    $("content").innerHTML=table(["Supplier","Link","Orders","Actions"],rows);
+    rows=state.suppliers.filter(s=>match(s.name,s.url)).map(s=>`<tr><td><b>${esc(s.name)}</b></td><td>${link(s.url)}</td><td>${state.orders.filter(o=>o.supplierId===s.id).length}</td><td>${btn("supplier",s.id,tr("Edit"))}</td></tr>`);
+    $("content").innerHTML=table([tr("Supplier"),tr("Link"),tr("Orders"),tr("Actions")],rows);
   }
   if(view==="workflows"){
     $("content").innerHTML=`<div class="grid md:grid-cols-2 2xl:grid-cols-4 gap-4">${stages.map((stage,index)=>{
       const tasks=state.tasks.filter(t=>t.status===stage&&match(t.title,t.description,t.assignee,product(t.productId)?.name));
       return `<section class="bg-slate-100/80 border rounded-2xl p-3 min-h-64">
-        <div class="flex justify-between items-center p-2 mb-3"><h3 class="text-sm font-semibold">${stage}</h3><span class="text-xs bg-white border rounded px-2 py-1">${tasks.length}</span></div>
+        <div class="flex justify-between items-center p-2 mb-3"><h3 class="text-sm font-semibold">${esc(tr(stage))}</h3><span class="text-xs bg-white border rounded px-2 py-1">${tasks.length}</span></div>
         <div class="space-y-3">${tasks.map(t=>{
           const overdue=t.due&&t.due<today()&&t.status!=="Done";
           const color=t.priority==="High"?"text-red-600 bg-red-50":t.priority==="Medium"?"text-amber-700 bg-amber-50":"text-blue-600 bg-blue-50";
           return `<article class="bg-white border rounded-xl p-4 shadow-sm">
-            <div class="flex justify-between items-center mb-3"><span class="text-[10px] px-2 py-1 rounded ${color}">${esc(t.priority)} priority</span>${btn("task",t.id,"Edit")}</div>
+            <div class="flex justify-between items-center mb-3"><span class="text-[10px] px-2 py-1 rounded ${color}">${esc(tr("Priority"))}: ${esc(tr(t.priority))}</span>${btn("task",t.id,tr("Edit"))}</div>
             <h4 class="font-semibold text-sm break-words">${esc(t.title)}</h4>
             <p class="text-xs text-slate-500 mt-2 whitespace-pre-wrap break-words">${esc(t.description)}</p>
             ${t.productId?`<p class="badge mt-3">${esc(product(t.productId).name)}</p>`:""}
-            <div class="flex flex-wrap justify-between gap-2 text-xs mt-4 pt-3 border-t"><span>${esc(t.assignee)||"Unassigned"}</span><span class="${overdue?"text-red-600":"text-slate-400"}">${t.due?fmt(t.due):"No due date"}${overdue?" · Overdue":""}</span></div>
+            <div class="flex flex-wrap justify-between gap-2 text-xs mt-4 pt-3 border-t"><span>${esc(t.assignee)||tr("Unassigned")}</span><span class="${overdue?"text-red-600":"text-slate-400"}">${t.due?fmt(t.due):tr("No due date")}${overdue?tr(" · Overdue"):""}</span></div>
             <div class="flex justify-between mt-3">
-              ${index?`<button class="small" data-move="${esc(t.id)}" data-stage="${stages[index-1]}">← Back</button>`:"<span></span>"}
-              ${index<3?`<button class="small text-blue-600" data-move="${esc(t.id)}" data-stage="${stages[index+1]}">Next →</button>`:'<span class="text-xs text-emerald-600">✓ Complete</span>'}
+              ${index?`<button class="small" data-move="${esc(t.id)}" data-stage="${stages[index-1]}">${esc(tr("← Back"))}</button>`:"<span></span>"}
+              ${index<3?`<button class="small text-blue-600" data-move="${esc(t.id)}" data-stage="${stages[index+1]}">${esc(tr("Next →"))}</button>`:`<span class="text-xs text-emerald-600">${esc(tr("✓ Complete"))}</span>`}
             </div>
           </article>`;
-        }).join("")||'<p class="text-xs text-slate-400 text-center py-8">No tasks in this stage</p>'}</div>
+        }).join("")||`<p class="text-xs text-slate-400 text-center py-8">${esc(tr("No tasks in this stage"))}</p>`}</div>
       </section>`;
     }).join("")}</div>`;
   }
   document.querySelectorAll("[data-action],[data-move]").forEach(b=>b.hidden=!canEdit);
   $("import").hidden=!canEdit;
-  $("saved").textContent=savedAt?`Last saved ${new Date(savedAt).toLocaleString()} · Revision ${revision}`:"No data saved yet.";
+  $("saved").textContent=savedAt?`${tr("Last saved")} ${new Date(savedAt).toLocaleString(lang==="th"?"th-TH":"en-GB")} · ${tr("Revision")} ${revision}`:tr("No data saved yet.");
 }
 
 function input(label,name,value="",type="text",required=true,full=false){
   return `<label class="${full?"sm:col-span-2":""}">${esc(label)}<input name="${name}" value="${esc(value)}" type="${type}" ${required?"required":""} ${type==="number"?'min="0" step="any"':'maxlength="2000"'}></label>`;
 }
 function select(label,name,options,value="",required=true){
-  return `<label class="sm:col-span-2">${esc(label)}<select name="${name}" ${required?"required":""}><option value="">${required?"Select…":"None"}</option>${options.map(([id,title])=>`<option value="${esc(id)}" ${id===value?"selected":""}>${esc(title)}</option>`).join("")}</select></label>`;
+  return `<label class="sm:col-span-2">${esc(label)}<select name="${name}" ${required?"required":""}><option value="">${required?tr("Select…"):tr("None")}</option>${options.map(([id,title])=>`<option value="${esc(id)}" ${id===value?"selected":""}>${esc(title)}</option>`).join("")}</select></label>`;
 }
 function openForm(action,id=""){
-  if(!canEdit)return notify("This account has view-only access.");
+  if(!canEdit)return notify(tr("This account has view-only access."));
   mode=action;editing=id;$("error").textContent="";
   let fields="",title="";
   if(action==="product"){
     const p=product(id)||{};
-    title=id?"Edit product":"Add product";
-    fields=input("Product name","name",p.name||"","text",true,true)+input("Variant / model","variant",p.variant||"","text",false,true)+input("Unit","unit",p.unit||"pcs")+input("Storage location","location",p.location||"","text",false);
+    title=id?tr("Edit product"):tr("Add product");
+    fields=input(tr("Product name"),"name",p.name||"","text",true,true)+input(tr("Variant / model"),"variant",p.variant||"","text",false,true)+input(tr("Unit"),"unit",p.unit||"pcs")+input(tr("Storage location"),"location",p.location||"","text",false);
   }
   if(action==="supplier"){
     const s=supplier(id)||{};
-    title=id?"Edit supplier":"Add supplier";
-    fields=input("Supplier name","name",s.name||"","text",true,true)+input("Shop URL","url",s.url||"","url",false,true);
+    title=id?tr("Edit supplier"):tr("Add supplier");
+    fields=input(tr("Supplier name"),"name",s.name||"","text",true,true)+input(tr("Shop URL"),"url",s.url||"","url",false,true);
   }
   if(action==="receive"){
-    if(!state.products.length||!state.suppliers.length)return notify("Add a product and supplier first.");
-    title="Purchase / receive stock";
-    fields=select("Product","productId",state.products.map(p=>[p.id,p.name+" · "+p.variant]),id)+
-      select("Supplier","supplierId",state.suppliers.map(s=>[s.id,s.name]))+
-      select("Status","status",[["received","Received"],["pending","Incoming / not received"]],"received")+
-      input("Record / receipt date","date",today(),"date")+input("Quantity in product units","qty","","number")+
-      input("Net cost of the entire lot (THB)","cost","","number",true,true)+
-      input("Order reference / notes","source","","text",false,true)+input("Product / order URL","url","","url",false,true)+
-      '<p class="sm:col-span-2 muted">Use the cost after discounts, including allocated shipping. Each purchase keeps its own cost.</p>';
+    if(!state.products.length||!state.suppliers.length)return notify(tr("Add a product and supplier first."));
+    title=tr("Purchase / receive stock");
+    fields=select(tr("Product"),"productId",state.products.map(p=>[p.id,p.name+" · "+p.variant]),id)+
+      select(tr("Supplier"),"supplierId",state.suppliers.map(s=>[s.id,s.name]))+
+      select(tr("Status"),"status",[["received",tr("Received")],["pending",tr("Incoming / not received")]],"received")+
+      input(tr("Record / receipt date"),"date",today(),"date")+input(tr("Quantity in product units"),"qty","","number")+
+      input(tr("Net cost of the entire lot (THB)"),"cost","","number",true,true)+
+      input(tr("Order reference / notes"),"source","","text",false,true)+input(tr("Product / order URL"),"url","","url",false,true)+
+      `<p class="sm:col-span-2 muted">${esc(tr("Use the cost after discounts, including allocated shipping. Each purchase keeps its own cost."))}</p>`;
   }
   if(action==="use"){
     const available=state.lots.filter(l=>remaining(l)>0&&(!id||l.productId===id));
-    if(!available.length)return notify("No available stock to use.");
-    title="Record stock usage";
-    fields=select("Stock lot","lotId",available.map(l=>[l.id,`${product(l.productId).name} · ${l.id} · ${num(remaining(l))} available`]),available.length===1?available[0].id:"")+
-      input("Quantity","qty","","number")+input("Date","date",today(),"date")+
-      input("Used by","person","","text",true,true)+input("Purpose / notes","note","","text",true,true);
+    if(!available.length)return notify(tr("No available stock to use."));
+    title=tr("Record stock usage");
+    fields=select(tr("Stock lot"),"lotId",available.map(l=>[l.id,`${product(l.productId).name} · ${l.id} · ${num(remaining(l))} ${tr("available")}`]),available.length===1?available[0].id:"")+
+      input(tr("Quantity"),"qty","","number")+input(tr("Date"),"date",today(),"date")+
+      input(tr("Used by"),"person","","text",true,true)+input(tr("Purpose / notes"),"note","","text",true,true);
   }
   if(action==="confirm"){
-    title="Receive the full lot";
-    fields=input("Actual receipt date","date",today(),"date",true,true)+
-      '<p class="sm:col-span-2 muted">Confirm only when the entire ordered quantity has arrived. This updates the existing lot without creating a duplicate purchase.</p>';
+    title=tr("Receive the full lot");
+    fields=input(tr("Actual receipt date"),"date",today(),"date",true,true)+
+      `<p class="sm:col-span-2 muted">${esc(tr("Confirm only when the entire ordered quantity has arrived. This updates the existing lot without creating a duplicate purchase."))}</p>`;
   }
   if(action==="cost"){
-    title="Correct lot cost";
-    fields=input("Net total lot cost (THB)","cost",state.lots.find(l=>l.id===id).cost,"number",true,true)+
-      '<p class="sm:col-span-2 muted">This recalculates remaining stock value and historical usage cost for this lot. The original order total is unchanged.</p>';
+    title=tr("Correct lot cost");
+    fields=input(tr("Net total lot cost (THB)"),"cost",state.lots.find(l=>l.id===id).cost,"number",true,true)+
+      `<p class="sm:col-span-2 muted">${esc(tr("This recalculates remaining stock value and historical usage cost for this lot. The original order total is unchanged."))}</p>`;
   }
   if(action==="task"){
     const t=state.tasks.find(t=>t.id===id)||{};
-    title=id?"Edit workflow task":"New workflow task";
-    fields=input("Task title","title",t.title||"","text",true,true)+
-      `<label class="sm:col-span-2">Description<textarea name="description" rows="3" maxlength="10000">${esc(t.description||"")}</textarea></label>`+
-      input("Assignee","assignee",t.assignee||"","text",false)+input("Due date","due",t.due||"","date",false)+
-      select("Stage","status",stages.map(s=>[s,s]),t.status||"Backlog")+
-      select("Priority","priority",["Low","Medium","High"].map(s=>[s,s]),t.priority||"Medium")+
-      select("Related product","productId",state.products.map(p=>[p.id,p.name+" · "+p.variant]),t.productId||"",false);
+    title=id?tr("Edit workflow task"):tr("New workflow task");
+    fields=input(tr("Task title"),"title",t.title||"","text",true,true)+
+      `<label class="sm:col-span-2">${esc(tr("Description"))}<textarea name="description" rows="3" maxlength="10000">${esc(t.description||"")}</textarea></label>`+
+      input(tr("Assignee"),"assignee",t.assignee||"","text",false)+input(tr("Due date"),"due",t.due||"","date",false)+
+      select(tr("Stage"),"status",stages.map(s=>[s,tr(s)]),t.status||"Backlog")+
+      select(tr("Priority"),"priority",["Low","Medium","High"].map(s=>[s,tr(s)]),t.priority||"Medium")+
+      select(tr("Related product"),"productId",state.products.map(p=>[p.id,p.name+" · "+p.variant]),t.productId||"",false);
   }
-  $("modalTitle").textContent=title;$("fields").innerHTML=fields;$("modal").showModal();
+  $("modalTitle").textContent=title;$("fields").innerHTML=fields;if(!$("modal").open)$("modal").showModal();
 }
 
 $("form").addEventListener("submit",async e=>{
@@ -426,14 +448,14 @@ $("form").addEventListener("submit",async e=>{
     const f=Object.fromEntries(new FormData(e.target)),next=copy(state);
     const amount=(name,positive=false)=>{
       const v=Number(f[name]);
-      if(f[name]===""||!Number.isFinite(v)||(positive?v<=0:v<0)||v>1e9)throw Error("Enter a valid quantity or cost.");
+      if(f[name]===""||!Number.isFinite(v)||(positive?v<=0:v<0)||v>1e9)throw Error(tr("Enter a valid quantity or cost."));
       return v;
     };
     if(mode==="product"){
       const p={id:editing||uid("P"),name:f.name.trim(),variant:f.variant.trim(),unit:f.unit.trim(),location:f.location.trim()};
       const i=next.products.findIndex(p=>p.id===editing);
       if(i>=0){
-        if(next.lots.some(l=>l.productId===editing)&&p.unit!==next.products[i].unit)throw Error("Cannot change units after purchasing stock.");
+        if(next.lots.some(l=>l.productId===editing)&&p.unit!==next.products[i].unit)throw Error(tr("Cannot change units after purchasing stock."));
         next.products[i]=p;
       }else next.products.push(p);
     }
@@ -449,12 +471,12 @@ $("form").addEventListener("submit",async e=>{
     }
     if(mode==="use"){
       const l=state.lots.find(l=>l.id===f.lotId),qty=amount("qty",true);
-      if(!l||qty>remaining(l)+1e-8)throw Error("Quantity exceeds available stock.");
+      if(!l||qty>remaining(l)+1e-8)throw Error(tr("Quantity exceeds available stock."));
       next.usages.push({id:uid("U"),lotId:l.id,qty,date:f.date,person:f.person.trim(),note:f.note.trim()});
     }
     if(mode==="confirm"){
       const l=next.lots.find(l=>l.id===editing);
-      if(!l?.pending)throw Error("This lot is not awaiting receipt.");
+      if(!l?.pending)throw Error(tr("This lot is not awaiting receipt."));
       l.pending=false;
       const o=next.orders.find(o=>o.id===l.orderId);
       o.date=f.date;o.dateType="Received";
@@ -471,7 +493,7 @@ $("form").addEventListener("submit",async e=>{
       const i=next.tasks.findIndex(t=>t.id===editing);
       if(i>=0)next.tasks[i]=t;else next.tasks.push(t);
     }
-    await commit(next);$("modal").close();notify("Saved successfully.");
+    await commit(next);$("modal").close();notify(tr("Saved successfully."));
   }catch(e){$("error").textContent=e.message;}
 });
 
@@ -482,12 +504,12 @@ document.addEventListener("click",async e=>{
   if(action)openForm(action.dataset.action,action.dataset.id||"");
   const move=e.target.closest("[data-move]");
   if(move){
-    if(!canEdit)return notify("This account has view-only access.");
+    if(!canEdit)return notify(tr("This account has view-only access."));
     try{
       const next=copy(state),t=next.tasks.find(t=>t.id===move.dataset.move);
-      if(!t)throw Error("Task not found.");
+      if(!t)throw Error(tr("Task not found."));
       t.status=move.dataset.stage;t.updatedAt=new Date().toISOString();
-      await commit(next);notify("Moved to "+t.status);
+      await commit(next);notify(tr("Moved to ")+tr(t.status));
     }catch(e){notify(e.message);}
   }
 });
@@ -502,22 +524,22 @@ function download(name,text){
 $("backup").onclick=()=>{
   if(blocked&&raw){download("management-os-recovery.json",raw);return;}
   download(`management-os-${today()}-r${revision}.json`,JSON.stringify({version:1,state,revision,savedAt},null,2));
-  notify("Backup downloaded.");
+  notify(tr("Backup downloaded."));
 };
 $("import").onclick=()=>$("file").click();
 $("file").onchange=async e=>{
   const file=e.target.files[0];if(!file)return;
   try{
-    if(file.size>20*1024*1024)throw Error("Maximum file size is 20 MB.");
+    if(file.size>20*1024*1024)throw Error(tr("Maximum file size is 20 MB."));
     const doc=JSON.parse(await file.text());
     const next=validate(doc.state||doc);
-    if(!confirm(`Replace current data with ${next.products.length} products, ${next.orders.length} orders, and ${next.tasks.length} tasks?\nDownload a backup of your current data first.`))return;
-    await commit(copy(next));notify("Backup imported successfully.");
-  }catch(e){notify("Import failed: "+e.message);}
+    if(!confirm(lang==="th"?`แทนที่ข้อมูลปัจจุบันด้วยสินค้า ${next.products.length} รายการ คำสั่งซื้อ ${next.orders.length} รายการ และงาน ${next.tasks.length} รายการหรือไม่?\nกรุณาดาวน์โหลดสำรองข้อมูลปัจจุบันก่อน`:`Replace current data with ${next.products.length} products, ${next.orders.length} orders, and ${next.tasks.length} tasks?\nDownload a backup of your current data first.`))return;
+    await commit(copy(next));notify(tr("Backup imported successfully."));
+  }catch(e){notify(tr("Import failed: ")+e.message);}
   finally{$("file").value="";}
 };
 window.addEventListener("storage",e=>{
-  if(e.key===KEY)notify("Data changed in another tab. Refresh before making further changes.");
+  if(e.key===KEY)notify(tr("Data changed in another tab. Refresh before making further changes."));
 });
 render();
 startSession();
