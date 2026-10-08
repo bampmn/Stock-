@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Management OS</title>
-<meta name="app-version" content="bilingual-public-2026-10-04">
+<meta name="app-version" content="product-overview-2026-10-08">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <style>
@@ -130,7 +130,15 @@ const today=()=>{
 };
 const uid=p=>p+"-"+(globalThis.crypto?.randomUUID?.()||Date.now().toString(36)+Math.random().toString(36).slice(2));
 const fmt=d=>d?new Date(d+"T12:00:00").toLocaleDateString(lang==="th"?"th-TH":"en-GB"):tr("Unknown date");
-const empty=()=>({products:[],suppliers:[],orders:[],lots:[],usages:[],tasks:[]});
+const initialModels=()=>[
+ {id:"M-AC",name:"ตู้แอร์รถเกี่ยว/รถตีดิน",note:""},
+ {id:"M-60",name:"รถอเนกประสงค์ 60hp",note:""},
+ {id:"M-115",name:"รถอเนกประสงค์ 115hp",note:""}
+];
+const empty=()=>({products:[],suppliers:[],orders:[],lots:[],usages:[],tasks:[],models:initialModels(),components:[]});
+let selectedModel="";
+const ui=(th,en)=>lang==="th"?th:en;
+
 const stages=["Backlog","In progress","Review","Done"];
 const views={
   overview:["Overview","A clear view of your stock and work."],
@@ -164,6 +172,19 @@ function safeURL(v){
 function validate(s){
   if(!s||typeof s!=="object")throw Error(tr("Invalid backup."));
   if(s.tasks===undefined)s.tasks=[];
+  if(s.models===undefined)s.models=initialModels();
+  if(s.components===undefined)s.components=[];
+  if(!Array.isArray(s.models)||!Array.isArray(s.components))throw Error(ui("ข้อมูลสินค้าหลักไม่ถูกต้อง","Invalid main product data"));
+  const modelIds=new Set(),componentKeys=new Set();
+  for(const m of s.models){
+   if(!m||typeof m.id!=="string"||!m.id||modelIds.has(m.id)||typeof m.name!=="string"||!m.name.trim()||typeof m.note!=="string")throw Error(ui("ข้อมูลสินค้าหลักไม่ถูกต้อง","Invalid main product"));
+   modelIds.add(m.id);
+  }
+  for(const c of s.components){
+   const key=c.modelId+"/"+c.productId;
+   if(!modelIds.has(c.modelId)||!Array.isArray(s.products)||!s.products.some(p=>p.id===c.productId)||componentKeys.has(key)||!Number.isFinite(c.qty)||c.qty<=0||c.qty>1e9||typeof c.note!=="string")throw Error(ui("รายการอะไหล่ไม่ถูกต้อง","Invalid component"));
+   componentKeys.add(key);
+  }
   for(const key of ["products","suppliers","orders","lots","usages","tasks"]){
     if(!Array.isArray(s[key]))throw Error("Missing table: "+key);
     const ids=new Set();
@@ -272,6 +293,7 @@ const table=(headers,rows)=>`<div class="bg-white border rounded-2xl overflow-au
 
 function render(){
  applyLanguage();
+ $("stats").classList.remove("hidden");
  $('accessLabel').textContent=canEdit?tr("Administrator"):tr("View-only");
  $('adminLogin').hidden=canEdit;$('logout').hidden=!authenticated;
 
@@ -299,21 +321,26 @@ function render(){
   let rows=[];
 
   if(view==="overview"){
-    const totals=stages.map(s=>[s,state.tasks.filter(t=>t.status===s).length]);
-    const top=[...state.products].sort((a,b)=>stock(b).value-stock(a).value).slice(0,5);
-    $("content").innerHTML=`
-      <div class="grid xl:grid-cols-2 gap-5">
-        <section class="bg-white border rounded-2xl p-6">
-          <div class="flex justify-between mb-6"><h3 class="font-semibold">${esc(tr("Workflow progress"))}</h3><button data-view="workflows" class="text-sm text-blue-600">${esc(tr("View board →"))}</button></div>
-          ${totals.map(([s,n])=>`<div class="mb-5"><div class="flex justify-between text-sm mb-2"><span>${esc(tr(s))}</span><b>${n}</b></div><div class="h-2 rounded bg-slate-100"><div class="h-2 rounded bg-blue-500" style="width:${state.tasks.length?n/state.tasks.length*100:0}%"></div></div></div>`).join("")}
-          <p class="muted">${esc(tr("Workflow tasks organize work. Stock changes only through purchase, receipt, and usage actions."))}</p>
-        </section>
-        <section class="bg-white border rounded-2xl p-6">
-          <h3 class="font-semibold mb-5">${esc(tr("Highest stock value"))}</h3>
-          ${top.length?top.map(p=>`<div class="flex justify-between gap-3 py-4 border-b"><div><b class="text-sm">${esc(p.name)}</b><p class="muted">${esc(p.variant)}</p></div><span class="text-sm font-semibold">${money(stock(p).value)}</span></div>`).join(""):`<p class="text-slate-400 text-sm py-10">${esc(tr("Import your inventory backup or add your first product."))}</p>`}
-        </section>
-      </div>`;
+    $("stats").classList.add("hidden");
+    $("title").textContent=ui("สินค้าหลัก","Main products");
+    $("subtitle").textContent=ui("เลือกสินค้าเพื่อดูอะไหล่ที่ใช้และจำนวนคงเหลือ","Choose a product to see its components and available stock.");
+    const model=state.models.find(m=>m.id===selectedModel);
+    $("sectionTitle").textContent=model?model.name:ui("สินค้าของเรา","Our products");
+    $("actions").innerHTML=model?btn("component","",ui("＋ เพิ่มอะไหล่ในสินค้า","＋ Add component"),"primary")+btn("model",model.id,ui("แก้ไขสินค้าหลัก","Edit main product")):btn("model","",ui("＋ เพิ่มสินค้าหลัก","＋ Add main product"),"primary");
+    if(!model){
+      $("content").innerHTML=`<div class="grid md:grid-cols-2 xl:grid-cols-3 gap-5">${state.models.map(m=>{
+       const count=state.components.filter(c=>c.modelId===m.id).length;
+       return `<button data-model="${esc(m.id)}" class="bg-white border rounded-2xl p-6 text-left hover:border-blue-500 hover:shadow-md transition focus:ring-2 focus:ring-blue-400"><div class="text-blue-600 text-3xl mb-6">▦</div><h3 class="text-xl font-bold">${esc(m.name)}</h3><p class="muted mt-3">${count} ${ui("รายการอะไหล่","components")}</p><p class="text-sm text-slate-500 mt-2">${esc(m.note)}</p><div class="text-blue-600 font-semibold mt-6">${ui("ดูรายการอะไหล่ →","View components →")}</div></button>`;
+      }).join("")}</div><p class="text-sm text-slate-500 mt-6">${ui("อะไหล่เดียวกันใช้ร่วมกันได้หลายสินค้า โดยอ้างอิงสต็อกเดียวกัน","A component can belong to multiple products, all referencing the same stock.")}</p>`;
+    }else{
+      const parts=state.components.filter(c=>c.modelId===model.id);
+      $("content").innerHTML=`<button data-model="" class="secondary mb-5">${ui("← สินค้าหลักทั้งหมด","← All main products")}</button><p class="text-sm text-slate-500 mb-4">${esc(model.note)}</p>`+(parts.length?table([ui("อะไหล่","Component"),ui("ใช้ต่อสินค้า 1 หน่วย","Required per unit"),ui("คงเหลือรวม","Shared available stock"),ui("ใช้ร่วมกับ","Also used by"),ui("หมายเหตุ","Notes"),tr("Actions")],parts.map(c=>{
+       const p=product(c.productId),shared=state.components.filter(x=>x.productId===c.productId&&x.modelId!==model.id).map(x=>state.models.find(m=>m.id===x.modelId).name);
+       return `<tr><td><b>${esc(p.name)}</b><p class="muted">${esc(p.variant)}</p></td><td>${num(c.qty)} ${esc(p.unit)}</td><td>${num(stock(p).qty)} ${esc(p.unit)}</td><td>${shared.map(esc).join(" / ")||"—"}</td><td>${esc(c.note)}</td><td>${btn("component",p.id,tr("Edit"))} ${btn("unlink",p.id,ui("นำออกจากสินค้า","Remove from product"))}</td></tr>`;
+      })): `<div class="bg-white border border-dashed rounded-2xl p-10 text-center"><h3 class="font-semibold">${ui("ยังไม่มีรายการอะไหล่","No components yet")}</h3><p class="text-slate-500 mt-3">${ui("ผู้ดูแลสามารถเพิ่มอะไหล่จากคลังสินค้าได้เมื่อพร้อม","The administrator can add components from inventory when ready.")}</p></div>`)+`<p class="muted mt-4">${ui("จำนวนคงเหลือเป็นสต็อกรวม การเพิ่มรายการอะไหล่ไม่ตัดสต็อก เบิกใช้ผ่านเมนูการเบิกใช้","Available quantities are shared stock. Adding components does not consume stock; record consumption under Usage.")}</p>`;
+    }
   }
+
   if(view==="inventory"){
     rows=state.products.filter(p=>match(p.name,p.variant,p.id,p.location)).map(p=>{
       const s=stock(p);
@@ -390,6 +417,23 @@ function openForm(action,id=""){
   if(!canEdit)return notify(tr("This account has view-only access."));
   mode=action;editing=id;$("error").textContent="";
   let fields="",title="";
+  if(action==="model"){
+    const m=state.models.find(m=>m.id===id)||{};
+    title=ui(id?"แก้ไขสินค้าหลัก":"เพิ่มสินค้าหลัก",id?"Edit main product":"Add main product");
+    fields=input(ui("ชื่อสินค้าหลัก","Main product name"),"name",m.name||"","text",true,true)+input(ui("รายละเอียด","Description"),"note",m.note||"","text",false,true);
+  }
+  if(action==="component"){
+    if(!state.products.length)return notify(ui("เพิ่มอะไหล่ในเมนูคลังสินค้าก่อน","Add a component in Inventory first."));
+    const c=state.components.find(c=>c.modelId===selectedModel&&c.productId===id)||{};
+    title=ui("อะไหล่ของสินค้า","Product component");
+    const options=state.products.filter(p=>p.id===id||!state.components.some(c=>c.modelId===selectedModel&&c.productId===p.id));
+    if(!options.length)return notify(ui("เพิ่มอะไหล่ในคลังครบแล้ว","All inventory items are already linked."));
+    fields=select(ui("เลือกอะไหล่จากคลัง","Choose an inventory component"),"productId",options.map(p=>[p.id,p.name+" · "+p.variant]),id)+input(ui("จำนวนที่ใช้ต่อสินค้า 1 หน่วย","Quantity per main product unit"),"qty",c.qty||1,"number")+input(ui("หมายเหตุ","Notes"),"note",c.note||"","text",false,true);
+  }
+  if(action==="unlink"){
+    title=ui("นำอะไหล่ออกจากสินค้า","Remove component from product");
+    fields=`<p class="sm:col-span-2">${ui("นำรายการนี้ออกจากสินค้าหลักนี้เท่านั้น อะไหล่และสต็อกในคลังยังคงเดิม","Remove this link only. The inventory item and its stock will remain unchanged.")}</p>`;
+  }
   if(action==="product"){
     const p=product(id)||{};
     title=id?tr("Edit product"):tr("Add product");
@@ -451,6 +495,16 @@ $("form").addEventListener("submit",async e=>{
       if(f[name]===""||!Number.isFinite(v)||(positive?v<=0:v<0)||v>1e9)throw Error(tr("Enter a valid quantity or cost."));
       return v;
     };
+    if(mode==="model"){
+      const m={id:editing||uid("M"),name:f.name.trim(),note:f.note.trim()};
+      const i=next.models.findIndex(m=>m.id===editing);
+      if(i>=0)next.models[i]=m;else next.models.push(m);
+    }
+    if(mode==="component"){
+      next.components=next.components.filter(c=>!(c.modelId===selectedModel&&c.productId===editing));
+      next.components.push({modelId:selectedModel,productId:f.productId,qty:amount("qty",true),note:f.note.trim()});
+    }
+    if(mode==="unlink")next.components=next.components.filter(c=>!(c.modelId===selectedModel&&c.productId===editing));
     if(mode==="product"){
       const p={id:editing||uid("P"),name:f.name.trim(),variant:f.variant.trim(),unit:f.unit.trim(),location:f.location.trim()};
       const i=next.products.findIndex(p=>p.id===editing);
@@ -498,6 +552,8 @@ $("form").addEventListener("submit",async e=>{
 });
 
 document.addEventListener("click",async e=>{
+  const modelButton=e.target.closest("[data-model]");
+  if(modelButton){selectedModel=modelButton.dataset.model;render();}
   const nav=e.target.closest("[data-view]");
   if(nav){view=nav.dataset.view;$("search").value="";render();}
   const action=e.target.closest("[data-action]");
